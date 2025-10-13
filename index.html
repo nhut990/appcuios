@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #101926, #1a2840);
+      background: linear-gradient(135deg, #0f1b2b, #1b2e4a);
       color: #fff;
       margin: 0;
       padding: 20px;
@@ -18,13 +18,14 @@
     }
     h1 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      color: #64b5f6;
     }
     .app {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     }
     .app-header {
@@ -44,8 +45,8 @@
     .version {
       background: rgba(255,255,255,0.08);
       border-radius: 8px;
-      padding: 8px;
-      margin-bottom: 6px;
+      padding: 10px;
+      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -55,7 +56,7 @@
       color: #000;
       border: none;
       border-radius: 8px;
-      padding: 6px 10px;
+      padding: 6px 12px;
       cursor: pointer;
       font-weight: bold;
     }
@@ -71,21 +72,20 @@
 <body>
   <div class="container">
     <h1>📱 Cài Đặt Ứng Dụng IPA</h1>
-
     <div id="apps"></div>
   </div>
 
   <script>
-    // 🧩 Danh sách ứng dụng và các phiên bản
+    // 🧩 Danh sách ứng dụng và các phiên bản IPA
     const apps = [
       {
         name: "Documents",
         versions: [
-          { version: "6.9", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
-          { version: "7.0", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
-          { version: "7.1", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
-          { version: "7.2", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
-          { version: "7.3", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
+          { version: "5.5.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4TEST.plist" },
+          { version: "6.9", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/TEST.plist" },
+          { version: "7.6.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1TEST.plist" },
+          { version: "8.1.18", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2TEST.plist" },
+          { version: "8.12.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3TEST.plist" }
         ]
       }
     ];
@@ -103,7 +103,7 @@
         <div class="versions" id="versions-${i}">
           ${app.versions.map(v => `
             <div class="version">
-              <div>Phiên bản ${v.version}</div>
+              <div>📦 Phiên bản <b>${v.version}</b></div>
               <button class="btn" onclick="install('${v.link}')">Cài</button>
             </div>
           `).join("")}
@@ -118,9 +118,7 @@
     }
 
     function install(link) {
-      if (link.includes("nhập vào đây")) {
-        alert("⚠️ Bạn chưa thêm link cài đặt IPA!\nHãy thay 'nhập vào đây...' bằng link itms-services:// thực tế.");
-      } else if (confirm("Bạn có muốn cài đặt ứng dụng này không?")) {
+      if (confirm("Bạn có muốn cài đặt phiên bản này không?")) {
         window.location.href = link;
       }
     }

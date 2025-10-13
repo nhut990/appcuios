@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cài Đặt Ứng Dụng IPA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #101926, #1a2840);
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .app {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .app-header:hover {
+      color: #64b5f6;
+    }
+    .versions {
+      display: none;
+      margin-top: 10px;
+      animation: fadeIn 0.3s;
+    }
+    .version {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 8px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn {
+      background: #64b5f6;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #90caf9;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📱 Cài Đặt Ứng Dụng IPA</h1>
+
+    <div id="apps"></div>
+  </div>
+
+  <script>
+    // 🧩 Danh sách ứng dụng và các phiên bản
+    const apps = [
+      {
+        name: "Documents",
+        versions: [
+          { version: "6.9", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
+          { version: "7.0", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
+          { version: "7.1", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
+          { version: "7.2", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
+          { version: "7.3", link: "nhập vào đây itms-services://?action=download-manifest&url=..." },
+        ]
+      }
+    ];
+
+    const appsContainer = document.getElementById("apps");
+
+    apps.forEach((app, i) => {
+      const appDiv = document.createElement("div");
+      appDiv.className = "app";
+      appDiv.innerHTML = `
+        <div class="app-header" onclick="toggleVersions(${i})">
+          <h2>${app.name}</h2>
+          <span>⬇️</span>
+        </div>
+        <div class="versions" id="versions-${i}">
+          ${app.versions.map(v => `
+            <div class="version">
+              <div>Phiên bản ${v.version}</div>
+              <button class="btn" onclick="install('${v.link}')">Cài</button>
+            </div>
+          `).join("")}
+        </div>
+      `;
+      appsContainer.appendChild(appDiv);
+    });
+
+    function toggleVersions(index) {
+      const div = document.getElementById("versions-" + index);
+      div.style.display = div.style.display === "block" ? "none" : "block";
+    }
+
+    function install(link) {
+      if (link.includes("nhập vào đây")) {
+        alert("⚠️ Bạn chưa thêm link cài đặt IPA!\nHãy thay 'nhập vào đây...' bằng link itms-services:// thực tế.");
+      } else if (confirm("Bạn có muốn cài đặt ứng dụng này không?")) {
+        window.location.href = link;
+      }
+    }
+  </script>
+</body>
+</html>

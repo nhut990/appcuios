@@ -3,50 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cài Đặt Ứng Dụng IPA</title>
+  <title>Cài Đặt Ứng Dụng iOS Cũ</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f1b2b, #1b2e4a);
+      background: radial-gradient(ellipse at top left, #232526 0%, #434343 70%, #000 100%);
       color: #fff;
       margin: 0;
       padding: 20px;
+      min-height: 100vh;
     }
     .container {
-      max-width: 800px;
+      max-width: 600px;
       margin: auto;
     }
-    h1 {
-      text-align: center;
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
       margin-bottom: 25px;
-      color: #64b5f6;
+    }
+    .title-row img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px #fff8);
+      background: #fff;
+      border-radius: 14px;
+      padding: 4px;
+      box-shadow: 0 2px 16px #0007;
+    }
+    h1 {
+      margin: 0;
+      color: #ff5555;
+      font-size: 2.1rem;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 6px #000c;
+    }
+    .app-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
     .app {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 14px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.10);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 0;
+      box-shadow: 0 0 8px 2px rgba(0,0,0,0.25);
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: box-shadow 0.15s;
     }
     .app-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
+      user-select: none;
+    }
+    .app-header h2 {
+      font-size: 1.15rem;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .app-header span {
+      font-size: 1.2rem;
+      margin-left: 10px;
+      transition: transform 0.2s;
     }
     .app-header:hover {
       color: #64b5f6;
     }
     .versions {
       display: none;
-      margin-top: 10px;
+      margin-top: 8px;
       animation: fadeIn 0.3s;
     }
     .version {
-      background: rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 8px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 7px;
+      padding: 7px 9px;
+      margin-bottom: 6px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -55,13 +98,13 @@
       background: #64b5f6;
       color: #000;
       border: none;
-      border-radius: 8px;
-      padding: 6px 12px;
+      border-radius: 7px;
+      padding: 4px 10px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.15s ease-in-out;
+      font-size: 0.97em;
+      transition: background 0.15s;
     }
-    /* Khi nhấn giữ nút */
     .btn:active {
       background: #43a047;
       color: #fff;
@@ -73,12 +116,19 @@
       from {opacity: 0;}
       to {opacity: 1;}
     }
+    @media (max-width: 700px) {
+      .container { max-width: 98vw; }
+      .app { max-width: 98vw; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>📱 Cài Đặt Ứng Dụng IPA</h1>
-    <div id="apps"></div>
+    <div class="title-row">
+      <img src="https://raw.githubusercontent.com/nhut990/files/refs/heads/main/hinh/Apple-Logo.png" alt="Apple Logo" />
+      <h1>Cài Đặt Ứng Dụng iOS Cũ</h1>
+    </div>
+    <div id="apps" class="app-list"></div>
   </div>
 
   <script>
@@ -103,7 +153,7 @@
       appDiv.innerHTML = `
         <div class="app-header" onclick="toggleVersions(${i})">
           <h2>${app.name}</h2>
-          <span>⬇️</span>
+          <span id="arrow-${i}">⬇️</span>
         </div>
         <div class="versions" id="versions-${i}">
           ${app.versions.map(v => `
@@ -117,13 +167,19 @@
       appsContainer.appendChild(appDiv);
     });
 
-    function toggleVersions(index) {
+    window.toggleVersions = function(index) {
       const div = document.getElementById("versions-" + index);
-      div.style.display = div.style.display === "block" ? "none" : "block";
+      const arrow = document.getElementById("arrow-" + index);
+      if (div.style.display === "block") {
+        div.style.display = "none";
+        if(arrow) arrow.style.transform = "";
+      } else {
+        div.style.display = "block";
+        if(arrow) arrow.style.transform = "rotate(180deg)";
+      }
     }
 
-    function install(link) {
-      // Mở link cài đặt trực tiếp
+    window.install = function(link) {
       window.location.href = link;
     }
   </script>

@@ -61,6 +61,7 @@
       font-weight: bold;
       transition: background 0.15s ease-in-out;
     }
+    /* Khi nhấn giữ nút */
     .btn:active {
       background: #43a047;
       color: #fff;
@@ -90,16 +91,6 @@
           { version: "7.6.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1TEST.plist" },
           { version: "8.1.18", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2TEST.plist" },
           { version: "8.12.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3TEST.plist" }
-        ]
-      },
-      {
-        name: "Facebook",
-        versions: [
-          { version: "300.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/5TEST.plist" },
-          { version: "301.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/9TEST.plist" },
-          { version: "411.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/6TEST.plist" },
-          { version: "491.1.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/7TEST.plist" },
-          { version: "504.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/8TEST.plist" }
         ]
       }
     ];
@@ -132,6 +123,7 @@
     }
 
     function install(link) {
+      // Mở link cài đặt trực tiếp
       window.location.href = link;
     }
   </script>

@@ -113,6 +113,35 @@
     .btn:hover {
       background: #90caf9;
     }
+    .extra-link {
+      background: rgba(255,255,255,0.10);
+      border-radius: 7px;
+      padding: 9px 12px;
+      margin: 10px 0 0 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-start;
+      font-size: 1rem;
+      color: #fff;
+      box-shadow: 0 0 6px 1px rgba(0,0,0,0.19);
+    }
+    .extra-link img {
+      width: 38px;
+      height: 38px;
+      border-radius: 7px;
+      object-fit: contain;
+      box-shadow: 0 2px 8px #0006;
+      background: #fff;
+      padding: 2px;
+    }
+    .extra-link a {
+      color: #64b5f6;
+      font-weight: bold;
+      text-decoration: underline;
+      margin-left: 8px;
+      font-size: 1.01em;
+    }
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
@@ -226,7 +255,12 @@
         versions: [
           { version: "1.0.4", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Ro.team.plist" },
           { version: "1.0.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Ro.team.plist" }
-        ]
+        ],
+        extra: {
+          name: "QR kích hoạt Rổ Team",
+          img: "https://raw.githubusercontent.com/nhut990/files/refs/heads/main/hinh/qr%20cua%20app-roteam.jpg",
+          link: "https://raw.githubusercontent.com/nhut990/files/refs/heads/main/hinh/qr%20cua%20app-roteam.jpg"
+        }
       }
     ];
 
@@ -247,6 +281,17 @@
               <button class="btn" onclick="install('${v.link}')">Cài</button>
             </div>
           `).join("")}
+          ${
+            app.extra ?
+            `<div class="extra-link">
+              <img src="${app.extra.img}" alt="QR Rổ Team" />
+              <div>
+                <b>${app.extra.name}</b><br>
+                <a href="${app.extra.link}" target="_blank" download="QR_ro_team.jpg">Tải về</a>
+              </div>
+            </div>`
+            : ""
+          }
         </div>
       `;
       appsContainer.appendChild(appDiv);

@@ -146,9 +146,39 @@
       from {opacity: 0;}
       to {opacity: 1;}
     }
+
+    /* Animation for "Minh" and "Nhut" */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.16em;
+      color: #fff;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      user-select: none;
+    }
+    .blinker {
+      display: inline-block;
+      animation: blink 1.2s infinite alternate;
+      font-weight: bold;
+    }
+    .blinker2 {
+      display: inline-block;
+      animation: blink2 1.2s infinite alternate;
+      font-weight: bold;
+    }
+    @keyframes blink {
+      from { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
+      to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
+    }
+    @keyframes blink2 {
+      from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
+      to { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
+    }
     @media (max-width: 700px) {
       .container { max-width: 98vw; }
       .app { max-width: 98vw; }
+      .footer { font-size: 1em; }
     }
   </style>
 </head>
@@ -159,6 +189,11 @@
       <h1>Cài Đặt Ứng Dụng iOS Cũ</h1>
     </div>
     <div id="apps" class="app-list"></div>
+  </div>
+
+  <div class="footer">
+    Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
+    &copy; 2025
   </div>
 
   <script>

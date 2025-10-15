@@ -175,10 +175,28 @@
       from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
       to { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
     }
+    .back-home {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 9px 16px;
+      background: #fff2;
+      color: #64b5f6;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.04em;
+      box-shadow: 0 2px 8px #0006;
+      transition: background 0.18s, color 0.18s;
+    }
+    .back-home:hover {
+      background: #64b5f6;
+      color: #fff;
+    }
     @media (max-width: 700px) {
       .container { max-width: 98vw; }
       .app { max-width: 98vw; }
       .footer { font-size: 1em; }
+      .back-home { font-size: 0.98em; }
     }
   </style>
 </head>
@@ -192,6 +210,7 @@
   </div>
 
   <div class="footer">
+    <a class="back-home" href="https://nhut990.github.io/">← Quay về trang chủ</a><br>
     Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
     &copy; 2025
   </div>

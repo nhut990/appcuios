@@ -214,7 +214,8 @@
   </div>
 
   <script>
-    const apps = [
+    // Toàn bộ code ES5, tránh arrow function, const/let, template string
+    var apps = [
       {
         name: "Documents",
         versions: [
@@ -367,7 +368,6 @@
           { version: "1.2.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Pureit2.plist" }
         ]
       },
-      // ==== YouTube Apps ====
       {
         name: "YouTube",
         versions: [
@@ -377,7 +377,6 @@
           { version: "20.10.4", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube4.plist" }
         ]
       },
-      // ==== Zalo Apps ====
       {
         name: "Zalo",
         versions: [
@@ -390,7 +389,6 @@
           { version: "251001", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo7.plist" }
         ]
       },
-      // ==== App Tổng Hợp ====
       {
         name: "App Tổng Hợp",
         versions: [
@@ -406,42 +404,51 @@
       }
     ];
 
-    const appsContainer = document.getElementById("apps");
+    var appsContainer = document.getElementById("apps");
 
-    apps.forEach((app, i) => {
-      const appDiv = document.createElement("div");
+    // Tạo danh sách ứng dụng (ES5)
+    for (var i = 0; i < apps.length; i++) {
+      var app = apps[i];
+      var appDiv = document.createElement("div");
       appDiv.className = "app";
-      appDiv.innerHTML = `
-        <div class="app-header" onclick="toggleVersions(${i})">
-          <h2>${app.name}</h2>
-          <span id="arrow-${i}">⬇️</span>
-        </div>
-        <div class="versions" id="versions-${i}">
-          ${app.versions.map(v => `
-            <div class="version">
-              <div>📦 Phiên bản <b>${v.version}</b></div>
-              <button class="btn" onclick="install('${v.link}')">Cài</button>
-            </div>
-          `).join("")}
-          ${
-            app.extra ?
-            `<div class="extra-link">
-              <img src="${app.extra.img}" alt="QR Rổ Team" />
-              <div>
-                <b>${app.extra.name}</b><br>
-                <a href="${app.extra.link}" target="_blank" download="QR_ro_team.jpg">Tải về</a>
-              </div>
-            </div>`
-            : ""
-          }
-        </div>
-      `;
-      appsContainer.appendChild(appDiv);
-    });
 
+      var versionsHtml = "";
+      for (var j = 0; j < app.versions.length; j++) {
+        var v = app.versions[j];
+        versionsHtml += '<div class="version">' +
+            '<div>📦 Phiên bản <b>' + v.version + '</b></div>' +
+            '<button class="btn" onclick="install(\'' + v.link + '\')">Cài</button>' +
+          '</div>';
+      }
+
+      // Nếu có extra
+      var extraHtml = "";
+      if (app.extra) {
+        extraHtml = '<div class="extra-link">' +
+          '<img src="' + app.extra.img + '" alt="QR Rổ Team" />' +
+          '<div>' +
+            '<b>' + app.extra.name + '</b><br>' +
+            '<a href="' + app.extra.link + '" target="_blank" download="QR_ro_team.jpg">Tải về</a>' +
+          '</div>' +
+        '</div>';
+      }
+
+      appDiv.innerHTML =
+        '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
+          '<h2>' + app.name + '</h2>' +
+          '<span id="arrow-' + i + '">⬇️</span>' +
+        '</div>' +
+        '<div class="versions" id="versions-' + i + '">' +
+          versionsHtml + extraHtml +
+        '</div>';
+
+      appsContainer.appendChild(appDiv);
+    }
+
+    // Hàm toggle hiển thị phiên bản
     window.toggleVersions = function(index) {
-      const div = document.getElementById("versions-" + index);
-      const arrow = document.getElementById("arrow-" + index);
+      var div = document.getElementById("versions-" + index);
+      var arrow = document.getElementById("arrow-" + index);
       if (div.style.display === "block") {
         div.style.display = "none";
         if(arrow) arrow.style.transform = "";
@@ -451,6 +458,7 @@
       }
     }
 
+    // Hàm cài đặt app
     window.install = function(link) {
       window.location.href = link;
     }

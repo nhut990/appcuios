@@ -190,6 +190,15 @@
       background: #64b5f6;
       color: #fff;
     }
+    .note-app-id {
+      text-align: center;
+      color: #bbb;
+      font-size: 1.04em;
+      margin: 24px 0 0 0;
+      font-style: italic;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
     @media (max-width: 700px) {
       .container { max-width: 98vw; }
       .app { max-width: 98vw; }
@@ -205,6 +214,9 @@
       <h1>Cài Đặt Ứng Dụng iOS Cũ</h1>
     </div>
     <div id="apps" class="app-list"></div>
+    <div class="note-app-id">
+      <em>Lưu ý: Các ứng dụng bên trên chỉ sử dụng được khi bạn có ID Apple của người tạo ra app</em>
+    </div>
   </div>
 
   <div class="footer">
@@ -217,7 +229,7 @@
     // Toàn bộ code ES5, tránh arrow function, const/let, template string
     var apps = [
       {
-        name: "Documents",
+        name: "1. Documents",
         versions: [
           { version: "5.5.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4TEST.plist" },
           { version: "6.9", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/TEST.plist" },
@@ -227,7 +239,7 @@
         ]
       },
       {
-        name: "Facebook",
+        name: "2. Facebook",
         versions: [
           { version: "301.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Nhut.plist" },
           { version: "371.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Nhut.plist" },
@@ -237,21 +249,21 @@
         ]
       },
       {
-        name: "UC.Browser",
+        name: "3. UC.Browser",
         versions: [
           { version: "10.3.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1ucbrowse.plist" },
           { version: "11.3.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2ucbrowse.plist" }
         ]
       },
       {
-        name: "Chợ Tốt",
+        name: "4. Chợ Tốt",
         versions: [
           { version: "4.36.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/chotot.plist" },
           { version: "4.9.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1chotot.plist" }
         ]
       },
       {
-        name: "Google Maps",
+        name: "5. Google Maps",
         versions: [
           { version: "3.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/5maps.plist" },
           { version: "4.3.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/maps.plist" },
@@ -262,7 +274,7 @@
         ]
       },
       {
-        name: "TikTok",
+        name: "6. TikTok",
         versions: [
           { version: "1.4.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4tiktok.plist" },
           { version: "23.7.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/tiktok.plist" },
@@ -272,7 +284,7 @@
         ]
       },
       {
-        name: "BODAPLAY AI",
+        name: "7. BODAPLAY AI",
         versions: [
           { version: "1.4.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Vodaplay.plist" },
           { version: "1.6.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Vodaplay.plist" },
@@ -280,7 +292,7 @@
         ]
       },
       {
-        name: "Telegram",
+        name: "8. Telegram",
         versions: [
           { version: "11.10", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Telegram.plist" },
           { version: "11.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Telegram.plist" },
@@ -288,7 +300,7 @@
         ]
       },
       {
-        name: "Cốc Cốc",
+        name: "9. Cốc Cốc",
         versions: [
           { version: "60.3.73", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/cococ.plist" },
           { version: "70.4.210", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1cococ.plist" },
@@ -296,7 +308,7 @@
         ]
       },
       {
-        name: "Messenger",
+        name: "10. Messenger",
         versions: [
           { version: "126.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/messenger.plist" },
           { version: "300.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1messenger.plist" },
@@ -304,7 +316,7 @@
         ]
       },
       {
-        name: "Rổ Team (Xem Phim)",
+        name: "11. Rổ Team (Xem Phim)",
         versions: [
           { version: "1.0.4", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Ro.team.plist" },
           { version: "1.0.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Ro.team.plist" }
@@ -316,7 +328,7 @@
         }
       },
       {
-        name: "Chord.AI",
+        name: "12. Chord.AI",
         versions: [
           { version: "1.4.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Chord.AI.plist" },
           { version: "1.9.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Chord.AI2.plist" },
@@ -326,7 +338,7 @@
         ]
       },
       {
-        name: "GarageBand",
+        name: "13. GarageBand",
         versions: [
           { version: "1.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband.plist" },
           { version: "1.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband1.plist" },
@@ -337,7 +349,7 @@
         ]
       },
       {
-        name: "Gmail",
+        name: "14. Gmail",
         versions: [
           { version: "5.0.170703", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Gmail.plist" },
           { version: "5.0.180225", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Gmail1.plist" },
@@ -345,7 +357,7 @@
         ]
       },
       {
-        name: "Lịch Vạn Niên",
+        name: "15. Lịch Vạn Niên",
         versions: [
           { version: "1.1.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Lichvannien.plist" },
           { version: "1.1.27", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Lichvannien2.plist" },
@@ -353,7 +365,7 @@
         ]
       },
       {
-        name: "Máy Tính++",
+        name: "16. Máy Tính++",
         versions: [
           { version: "1.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Maytinh_plus.plist" },
           { version: "1.9", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Maytinh_plus1.plist" },
@@ -362,14 +374,14 @@
         ]
       },
       {
-        name: "Pureit",
+        name: "17. Pureit",
         versions: [
           { version: "1.2.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Pureit.plist" },
           { version: "1.2.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Pureit2.plist" }
         ]
       },
       {
-        name: "YouTube",
+        name: "18. YouTube",
         versions: [
           { version: "11.03.16", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube.plist" },
           { version: "14.33.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube1.plist" },
@@ -378,7 +390,7 @@
         ]
       },
       {
-        name: "Zalo",
+        name: "19. Zalo",
         versions: [
           { version: "3.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo.plist" },
           { version: "5.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo1.plist" },
@@ -390,7 +402,7 @@
         ]
       },
       {
-        name: "App Tổng Hợp",
+        name: "20. App Tổng Hợp",
         versions: [
           {
             version: "ProTube 1.0.7",
@@ -399,6 +411,10 @@
           {
             version: "VOH Radio Online 1.3.5",
             link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/voh.radio.plist"
+          },
+          {
+            version: "VOH Radio Online 1.2.7",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/voh.radio127.plist"
           }
         ]
       }
@@ -417,7 +433,7 @@
         var v = app.versions[j];
         versionsHtml += '<div class="version">' +
             '<div>📦 Phiên bản <b>' + v.version + '</b></div>' +
-            '<button class="btn" onclick="install(\'' + v.link + '\')">Cài</button>' +
+            '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
           '</div>';
       }
 

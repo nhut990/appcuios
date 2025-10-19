@@ -226,7 +226,6 @@
   </div>
 
   <script>
-    // Toàn bộ code ES5, tránh arrow function, const/let, template string
     var apps = [
       {
         name: "1. Documents",
@@ -368,8 +367,19 @@
         name: "14. Gmail",
         versions: [
           { version: "5.0.170703", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Gmail.plist" },
+          { version: "5.0.170730", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail.5.0.170730.plist" },
+          { version: "5.0.171104", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail.5.0.171104.plist" },
           { version: "5.0.180225", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Gmail1.plist" },
-          { version: "6.0.190324", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Gmail2.plist" }
+          { version: "5.0.180813", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail5.0.180813.plist" },
+          { version: "5.0.190113", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail5.0.190113.plist" },
+          { version: "6.0.190324", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Gmail2.plist" },
+          { version: "6.0.200112", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail.6.0.200112.plist" },
+          { version: "6.0.210221", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail.6.0.210221.plist" },
+          { version: "6.0.211101", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail6.0.211101.plist" },
+          { version: "6.0.221002", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail6.0.221002.plist" },
+          { version: "6.0.230903", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail6.0.230903.plist" },
+          { version: "6.0.240908", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail6.0.240908.plist" },
+          { version: "6.0.250427", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail6.0.250427.plist" }
         ]
       },
       {
@@ -442,7 +452,6 @@
 
     var appsContainer = document.getElementById("apps");
 
-    // Tạo danh sách ứng dụng (ES5)
     for (var i = 0; i < apps.length; i++) {
       var app = apps[i];
       var appDiv = document.createElement("div");
@@ -457,7 +466,6 @@
           '</div>';
       }
 
-      // Nếu có extra
       var extraHtml = "";
       if (app.extra) {
         extraHtml = '<div class="extra-link">' +
@@ -481,7 +489,6 @@
       appsContainer.appendChild(appDiv);
     }
 
-    // Hàm toggle hiển thị phiên bản
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);
       var arrow = document.getElementById("arrow-" + index);
@@ -494,7 +501,6 @@
       }
     }
 
-    // Hàm cài đặt app
     window.install = function(link) {
       window.location.href = link;
     }

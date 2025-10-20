@@ -72,6 +72,19 @@
       margin: 0;
       font-weight: 600;
       letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .app-header .app-icon {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: 0 2px 8px #0006;
+      margin-right: 2px;
+      vertical-align: middle;
     }
     .app-header span {
       font-size: 1.2rem;
@@ -94,6 +107,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+    .version .ver-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff;
+      margin-right: 7px;
+      box-shadow: 0 2px 8px #0004;
+      vertical-align: middle;
     }
     .btn {
       background: #64b5f6;
@@ -204,6 +227,7 @@
       .app { max-width: 98vw; }
       .footer { font-size: 1em; }
       .back-home { font-size: 0.98em; }
+      .app-header h2 { font-size: 1em; }
     }
   </style>
 </head>
@@ -226,9 +250,32 @@
   </div>
 
   <script>
+    var appIcons = {
+      "Documents": "https://github.com/nhut990/files/releases/download/V1.0-icon/Documents.png",
+      "Facebook": "https://github.com/nhut990/files/releases/download/V1.0-icon/Facebook.png",
+      "UC.Browser": "https://github.com/nhut990/files/releases/download/V1.0-icon/UC.Browser.png",
+      "Chợ Tốt": "https://github.com/nhut990/files/releases/download/V1.0-icon/Chotot.png",
+      "Google Maps": "https://github.com/nhut990/files/releases/download/V1.0-icon/GoogleMaps.png",
+      "TikTok": "https://github.com/nhut990/files/releases/download/V1.0-icon/Tiktok.png",
+      "BODAPLAY AI": "https://github.com/nhut990/files/releases/download/V1.0-icon/BODAPLAY.AI.png",
+      "Telegram": "https://github.com/nhut990/files/releases/download/V1.0-icon/Telegram.png",
+      "Cốc Cốc": "https://github.com/nhut990/files/releases/download/V1.0-icon/Coccoc.png",
+      "Messenger": "https://github.com/nhut990/files/releases/download/V1.0-icon/Messenger.png",
+      "Rổ Team (Xem Phim)": "https://github.com/nhut990/files/releases/download/V1.0-icon/Roteam.jpg",
+      "Chord.AI": "https://github.com/nhut990/files/releases/download/V1.0-icon/Chord.AI.png",
+      "GarageBand": "https://github.com/nhut990/files/releases/download/V1.0-icon/GarageBand.png",
+      "Gmail": "https://github.com/nhut990/files/releases/download/V1.0-icon/Gmail.png",
+      "Lịch Vạn Niên": "https://github.com/nhut990/files/releases/download/V1.0-icon/Lichvannien.png",
+      "Máy Tính++": "https://github.com/nhut990/files/releases/download/V1.0-icon/Maytinhplus.png",
+      "Pureit": "https://github.com/nhut990/files/releases/download/V1.0-icon/Pureit.png",
+      "YouTube": "https://github.com/nhut990/files/releases/download/V1.0-icon/Youtube.png",
+      "Zalo": "https://github.com/nhut990/files/releases/download/V1.0-icon/zalo.png",
+      "App Tổng Hợp": "https://raw.githubusercontent.com/nhut990/files/refs/heads/main/hinh/Apple-Logo.png"
+    };
+
     var apps = [
       {
-        name: "1. Documents",
+        name: "Documents",
         versions: [
           { version: "1.0.0.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Documents1001.plist" },
           { version: "1.5.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Documents150.plist" },
@@ -245,7 +292,7 @@
         ]
       },
       {
-        name: "2. Facebook",
+        name: "Facebook",
         versions: [
           { version: "301.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Nhut.plist" },
           { version: "371.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Nhut.plist" },
@@ -255,21 +302,21 @@
         ]
       },
       {
-        name: "3. UC.Browser",
+        name: "UC.Browser",
         versions: [
           { version: "10.3.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1ucbrowse.plist" },
           { version: "11.3.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2ucbrowse.plist" }
         ]
       },
       {
-        name: "4. Chợ Tốt",
+        name: "Chợ Tốt",
         versions: [
           { version: "4.36.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/chotot.plist" },
           { version: "4.9.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1chotot.plist" }
         ]
       },
       {
-        name: "5. Google Maps",
+        name: "Google Maps",
         versions: [
           { version: "3.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/5maps.plist" },
           { version: "4.3.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/maps.plist" },
@@ -280,7 +327,7 @@
         ]
       },
       {
-        name: "6. TikTok",
+        name: "TikTok",
         versions: [
           { version: "1.4.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4tiktok.plist" },
           { version: "23.7.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/tiktok.plist" },
@@ -290,7 +337,7 @@
         ]
       },
       {
-        name: "7. BODAPLAY AI",
+        name: "BODAPLAY AI",
         versions: [
           { version: "1.4.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Vodaplay.plist" },
           { version: "1.6.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Vodaplay.plist" },
@@ -298,7 +345,7 @@
         ]
       },
       {
-        name: "8. Telegram",
+        name: "Telegram",
         versions: [
           { version: "11.10", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Telegram.plist" },
           { version: "11.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Telegram.plist" },
@@ -306,7 +353,7 @@
         ]
       },
       {
-        name: "9. Cốc Cốc",
+        name: "Cốc Cốc",
         versions: [
           { version: "60.3.73", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/cococ.plist" },
           { version: "70.4.210", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1cococ.plist" },
@@ -314,7 +361,7 @@
         ]
       },
       {
-        name: "10. Messenger",
+        name: "Messenger",
         versions: [
           { version: "15.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Messenger15.plist" },
           { version: "53.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Messenger53.plist" },
@@ -331,7 +378,7 @@
         ]
       },
       {
-        name: "11. Rổ Team (Xem Phim)",
+        name: "Rổ Team (Xem Phim)",
         versions: [
           { version: "1.0.4", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Ro.team.plist" },
           { version: "1.0.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Ro.team.plist" }
@@ -343,7 +390,7 @@
         }
       },
       {
-        name: "12. Chord.AI",
+        name: "Chord.AI",
         versions: [
           { version: "1.4.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Chord.AI.plist" },
           { version: "1.9.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Chord.AI2.plist" },
@@ -353,7 +400,7 @@
         ]
       },
       {
-        name: "13. GarageBand",
+        name: "GarageBand",
         versions: [
           { version: "1.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband.plist" },
           { version: "1.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband1.plist" },
@@ -364,7 +411,7 @@
         ]
       },
       {
-        name: "14. Gmail",
+        name: "Gmail",
         versions: [
           { version: "5.0.170703", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Gmail.plist" },
           { version: "5.0.170730", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Gmail.5.0.170730.plist" },
@@ -383,7 +430,7 @@
         ]
       },
       {
-        name: "15. Lịch Vạn Niên",
+        name: "Lịch Vạn Niên",
         versions: [
           { version: "1.1.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Lichvannien.plist" },
           { version: "1.1.27", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Lichvannien2.plist" },
@@ -391,7 +438,7 @@
         ]
       },
       {
-        name: "16. Máy Tính++",
+        name: "Máy Tính++",
         versions: [
           { version: "1.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Maytinh_plus.plist" },
           { version: "1.9", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Maytinh_plus1.plist" },
@@ -400,14 +447,14 @@
         ]
       },
       {
-        name: "17. Pureit",
+        name: "Pureit",
         versions: [
           { version: "1.2.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Pureit.plist" },
           { version: "1.2.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Pureit2.plist" }
         ]
       },
       {
-        name: "18. YouTube",
+        name: "YouTube",
         versions: [
           { version: "11.03.16", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube.plist" },
           { version: "14.33.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube1.plist" },
@@ -416,7 +463,7 @@
         ]
       },
       {
-        name: "19. Zalo",
+        name: "Zalo",
         versions: [
           { version: "3.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo.plist" },
           { version: "5.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo1.plist" },
@@ -428,7 +475,7 @@
         ]
       },
       {
-        name: "20. App Tổng Hợp",
+        name: "App Tổng Hợp",
         versions: [
           {
             version: "ProTube 1.0.7",
@@ -454,14 +501,17 @@
 
     for (var i = 0; i < apps.length; i++) {
       var app = apps[i];
+      var appIcon = appIcons[app.name] || "https://raw.githubusercontent.com/nhut990/files/refs/heads/main/hinh/Apple-Logo.png";
       var appDiv = document.createElement("div");
       appDiv.className = "app";
 
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
-        versionsHtml += '<div class="version">' +
-            '<div>📦 Phiên bản <b>' + v.version + '</b></div>' +
+        versionsHtml +=
+          '<div class="version">' +
+            '<div><img class="ver-icon" src="' + appIcon + '" alt="App Icon"/>' +
+            'Phiên bản <b>' + v.version + '</b></div>' +
             '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
           '</div>';
       }
@@ -479,7 +529,7 @@
 
       appDiv.innerHTML =
         '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
-          '<h2>' + app.name + '</h2>' +
+          '<h2>' + (i + 1) + '. <img class="app-icon" src="' + appIcon + '" alt="App Icon"/>' + app.name + '</h2>' +
           '<span id="arrow-' + i + '">⬇️</span>' +
         '</div>' +
         '<div class="versions" id="versions-' + i + '">' +

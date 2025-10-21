@@ -22,26 +22,44 @@
       padding: 25px 40px;
       box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
       animation: fadeIn 1.5s ease-in-out;
+      text-align: center;
     }
 
     p {
+      margin: 10px 0;
+    }
+
+    .vn {
       color: #d60000;
       font-size: 20px;
       font-weight: 600;
-      text-align: center;
-      margin: 0;
       letter-spacing: 0.5px;
+      animation: fadeIn 1.5s ease-in-out, glow 2s infinite alternate;
+    }
+
+    .en {
+      color: #333;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      opacity: 0.8;
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 4px #ff9999; }
+      to { text-shadow: 0 0 14px #ff3333; }
+    }
   </style>
 </head>
 <body>
   <div class="box">
-    <p>Đây là trang 2 app cũ iOS, tôi sẽ sớm cập nhật nó ở đây.</p>
+    <p class="vn">Đây là trang 2 app cũ iOS, tôi sẽ sớm cập nhật nó ở đây.</p>
+    <p class="en">This is the old iOS app page 2. I will update it here soon.</p>
   </div>
 </body>
 </html>

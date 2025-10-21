@@ -135,82 +135,9 @@
     .btn:hover {
       background: #90caf9;
     }
-    .extra-link {
-      background: rgba(255,255,255,0.10);
-      border-radius: 7px;
-      padding: 9px 12px;
-      margin: 10px 0 0 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      justify-content: flex-start;
-      font-size: 1rem;
-      color: #fff;
-      box-shadow: 0 0 6px 1px rgba(0,0,0,0.19);
-    }
-    .extra-link img {
-      width: 38px;
-      height: 38px;
-      border-radius: 7px;
-      object-fit: contain;
-      box-shadow: 0 2px 8px #0006;
-      background: #fff;
-      padding: 2px;
-    }
-    .extra-link a {
-      color: #64b5f6;
-      font-weight: bold;
-      text-decoration: underline;
-      margin-left: 8px;
-      font-size: 1.01em;
-    }
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
-    }
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 1.16em;
-      color: #fff;
-      letter-spacing: 1px;
-      opacity: 0.8;
-      user-select: none;
-    }
-    .blinker {
-      display: inline-block;
-      animation: blink 1.2s infinite alternate;
-      font-weight: bold;
-    }
-    .blinker2 {
-      display: inline-block;
-      animation: blink2 1.2s infinite alternate;
-      font-weight: bold;
-    }
-    @keyframes blink {
-      from { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
-      to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
-    }
-    @keyframes blink2 {
-      from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
-      to { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
-    }
-    .back-home {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 9px 16px;
-      background: #fff2;
-      color: #64b5f6;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.04em;
-      box-shadow: 0 2px 8px #0006;
-      transition: background 0.18s, color 0.18s;
-    }
-    .back-home:hover {
-      background: #64b5f6;
-      color: #fff;
     }
     .note-app-id {
       text-align: center;
@@ -224,8 +151,6 @@
     @media (max-width: 700px) {
       .container { max-width: 98vw; }
       .app { max-width: 98vw; }
-      .footer { font-size: 1em; }
-      .back-home { font-size: 0.98em; }
     }
   </style>
 </head>
@@ -241,14 +166,8 @@
     </div>
   </div>
 
-  <div class="footer">
-    <a class="back-home" href="https://nhut990.github.io/">← Quay về trang chủ</a><br>
-    Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
-    &copy; 2025
-  </div>
-
   <script>
-    // Danh sách chỉ còn lại app 1 và 2
+    // Chỉ 2 app đầu tiên
     var apps = [
       {
         name: "1. Documents",
@@ -288,6 +207,7 @@
       var appDiv = document.createElement("div");
       appDiv.className = "app";
 
+      // Render danh sách phiên bản với icon app
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
@@ -297,6 +217,7 @@
           '</div>';
       }
 
+      // Hiển thị icon trong tiêu đề app
       appDiv.innerHTML =
         '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
           '<h2>' +

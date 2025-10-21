@@ -6,19 +6,42 @@
   <title>Trang 2 App Cũ iOS</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      color: #333;
-      text-align: center;
-      padding-top: 100px;
+      background: linear-gradient(135deg, #fff5f5, #ffe6e6);
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
+
+    .box {
+      background-color: #fff;
+      border: 2px solid #ff4d4d;
+      border-radius: 10px;
+      padding: 25px 40px;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
     p {
+      color: #d60000;
       font-size: 20px;
-      font-weight: bold;
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
-  <p>Đây là trang 2 app cũ iOS, tôi sẽ sớm cập nhật nó ở đây.</p>
+  <div class="box">
+    <p>Đây là trang 2 app cũ iOS, tôi sẽ sớm cập nhật nó ở đây.</p>
+  </div>
 </body>
 </html>

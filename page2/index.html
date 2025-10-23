@@ -3,63 +3,338 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang 2 App Cũ iOS</title>
+  <title>Cài Đặt Ứng Dụng iOS Phiên Bản Cũ</title>
   <style>
     body {
-      background: linear-gradient(135deg, #fff5f5, #ffe6e6);
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(ellipse at top left, #232526 0%, #434343 70%, #000 100%);
+      color: #fff;
       margin: 0;
+      padding: 20px;
+      min-height: 100vh;
     }
-
-    .box {
-      background-color: #fff;
-      border: 2px solid #ff4d4d;
-      border-radius: 10px;
-      padding: 25px 40px;
-      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);
-      animation: fadeIn 1.5s ease-in-out;
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+    .title-row img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px #fff8);
+      background: #fff;
+      border-radius: 14px;
+      padding: 4px;
+      box-shadow: 0 2px 16px #0007;
+    }
+    h1 {
+      margin: 0;
+      color: #ff5555;
+      font-size: 2.1rem;
+      font-weight: bold;
       text-align: center;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 6px #000c;
     }
-
-    p {
-      margin: 10px 0;
+    .app-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
-
-    .vn {
-      color: #d60000;
-      font-size: 20px;
+    .app {
+      background: rgba(255, 255, 255, 0.10);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 0;
+      box-shadow: 0 0 8px 2px rgba(0,0,0,0.25);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      transition: box-shadow 0.15s;
+    }
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .app-header h2 {
+      font-size: 1.15rem;
+      margin: 0;
       font-weight: 600;
       letter-spacing: 0.5px;
-      animation: fadeIn 1.5s ease-in-out, glow 2s infinite alternate;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-
-    .en {
-      color: #333;
-      font-size: 17px;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      opacity: 0.8;
+    .app-header span {
+      font-size: 1.2rem;
+      margin-left: 10px;
+      transition: transform 0.2s;
     }
-
+    .app-header:hover {
+      color: #64b5f6;
+    }
+    .app-icon {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px #0005;
+      background: #fff;
+      margin-right: 2px;
+    }
+    .versions {
+      display: none;
+      margin-top: 8px;
+      animation: fadeIn 0.3s;
+    }
+    .version {
+      background: rgba(255,255,255,0.15);
+      border-radius: 7px;
+      padding: 7px 9px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .version .ver-icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff;
+      margin-right: 8px;
+      vertical-align: middle;
+      box-shadow: 0 2px 8px #0003;
+    }
+    .btn {
+      background: #64b5f6;
+      color: #000;
+      border: none;
+      border-radius: 7px;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.97em;
+      transition: background 0.15s;
+    }
+    .btn:active {
+      background: #43a047;
+      color: #fff;
+    }
+    .btn:hover {
+      background: #90caf9;
+    }
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 4px #ff9999; }
-      to { text-shadow: 0 0 14px #ff3333; }
+    .note-app-id {
+      text-align: center;
+      color: #bbb;
+      font-size: 1.04em;
+      margin: 24px 0 0 0;
+      font-style: italic;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+    /* --- Footer style --- */
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin: 54px 0 18px 0;
+    }
+    .footer-btn {
+      background: #444a;
+      border-radius: 18px;
+      padding: 10px 38px;
+      font-size: 1.28em;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+      margin-bottom: 3px;
+      letter-spacing: 1px;
+    }
+    .footer-btn.trang1 {
+      color: #ff5555;
+      border: none;
+      margin-bottom: 0;
+    }
+    .footer-btn.trang-chu {
+      color: #64b5f6;
+      border: none;
+    }
+    .created-by {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.35em;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+    .created-by .author {
+      color: #64b5f6;
+      font-weight: bold;
+      font-size: 1.12em;
+      margin: 0 2px;
+    }
+    .created-by .year {
+      color: #eee;
+      font-size: 1.1em;
+      display: block;
+      margin-top: 2px;
+    }
+    .created-by .red {
+      color: #ff5555;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <p class="vn">Đây là trang 2 app cũ iOS, tôi sẽ sớm cập nhật nó ở đây.</p>
-    <p class="en">This is the old iOS app page 2. I will update it here soon.</p>
+  <div class="container">
+    <div class="title-row">
+      <img src="https://raw.githubusercontent.com/nhut990/files/refs/heads/main/hinh/Apple-Logo.png" alt="Apple Logo" />
+      <h1>Cài Đặt Ứng Dụng iOS Phiên Bản Cũ</h1>
+    </div>
+    <div id="apps" class="app-list"></div>
+    <div class="note-app-id">
+      <em>Lưu ý: Các ứng dụng bên trên chỉ sử dụng được khi bạn có ID Apple của người tạo ra app</em>
+    </div>
+    <!-- Footer with links and attribution -->
+    <div class="footer-links">
+      <a href="https://nhut990.github.io/appcuios/" class="footer-btn trang1">Trang 1</a>
+      <a href="https://nhut990.github.io/" class="footer-btn trang-chu">← Quay về trang chủ</a>
+      <div class="created-by">
+        Created by <span class="author">Minh <span class="red">Nhut</span></span>
+        <span class="year">&copy; 2025</span>
+      </div>
+    </div>
   </div>
+  <script>
+    var apps = [
+      {
+        name: "22. FLAC Player+",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/FLAC-Player.jpg",
+        versions: [
+          { version: "1.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.1.5.plist" },
+          { version: "1.6", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.1.6.plist" },
+          { version: "1.7", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.1.7.plist" },
+          { version: "2.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.2.0.plist" },
+          { version: "2.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.2.3.plist" },
+          { version: "2.7", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.2.7.plist" },
+          { version: "2.9.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.2.9.3.plist" }
+        ]
+      }
+    ];
+
+    var chromeApps = [
+      {
+        name: "23. Chrome",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Chrome.jpg",
+        versions: [
+          { version: "19.1084.60", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.19.1084.60.plist" },
+          { version: "21.1180.82", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.21.1180.82.plist" },
+          { version: "33.1750.14", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.33.1750.14.plist" },
+          { version: "46.2490.85", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.46.2490.85.plist" },
+          { version: "71.3578.89", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.71.3578.89.plist" },
+          { version: "86.4240.77", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.86.4240.77.plist" },
+          { version: "115.5790.160", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.115.5790.160.plist" },
+          { version: "130.6723.78", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.130.6723.78.plist" },
+          { version: "138.7204.119", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.138.7204.119.plist" },
+          { version: "141.7390.96", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.141.7390.96.plist" }
+        ]
+      }
+    ];
+
+    var instagramApps = [
+      {
+        name: "24. Instagram",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Instagram.jpg",
+        versions: [
+          { version: "1.14.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.1.14.0.plist" },
+          { version: "1.9.4", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.1.9.4.plist" },
+          { version: "10.23.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.10.23.0.plist" },
+          { version: "147.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.147.0.plist" },
+          { version: "240.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.240.0.plist" },
+          { version: "288.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.288.1.plist" },
+          { version: "309.1.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.309.1.1.plist" },
+          { version: "342.0.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.342.0.3.plist" },
+          { version: "375.2.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.375.2.0.plist" },
+          { version: "398.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.398.0.0.plist" },
+          { version: "403.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.403.0.0.plist" }
+        ]
+      }
+    ];
+
+    var appsContainer = document.getElementById("apps");
+
+    function renderApps(appList, offset) {
+      for (var i = 0; i < appList.length; i++) {
+        var app = appList[i];
+        var appDiv = document.createElement("div");
+        appDiv.className = "app";
+
+        // Render danh sách phiên bản với icon app
+        var versionsHtml = "";
+        for (var j = 0; j < app.versions.length; j++) {
+          var v = app.versions[j];
+          versionsHtml += '<div class="version">' +
+              '<div><img src="' + app.icon + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b></div>' +
+              '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
+            '</div>';
+        }
+
+        // Hiển thị icon trong tiêu đề app
+        appDiv.innerHTML =
+          '<div class="app-header" onclick="toggleVersions(' + (i + offset) + ')">' +
+            '<h2>' +
+              '<span>' + app.name.split(' ')[0] + '</span>' +
+              '<img src="' + app.icon + '" alt="icon" class="app-icon">' +
+              app.name.substring(app.name.indexOf(' ')+1) +
+            '</h2>' +
+            '<span id="arrow-' + (i + offset) + '">⬇️</span>' +
+          '</div>' +
+          '<div class="versions" id="versions-' + (i + offset) + '">' +
+            versionsHtml +
+          '</div>';
+
+        appsContainer.appendChild(appDiv);
+      }
+    }
+
+    // Render các app
+    renderApps(apps, 0);
+    renderApps(chromeApps, apps.length);
+    renderApps(instagramApps, apps.length + chromeApps.length);
+
+    window.toggleVersions = function(index) {
+      var div = document.getElementById("versions-" + index);
+      var arrow = document.getElementById("arrow-" + index);
+      if (div.style.display === "block") {
+        div.style.display = "none";
+        if(arrow) arrow.style.transform = "";
+      } else {
+        div.style.display = "block";
+        if(arrow) arrow.style.transform = "rotate(180deg)";
+      }
+    }
+
+    window.install = function(link) {
+      window.location.href = link;
+    }
+  </script>
 </body>
 </html>

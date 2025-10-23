@@ -271,6 +271,7 @@
   <script>
     // Danh sách app với icon tương ứng
     var apps = [
+      // Các app trước giữ nguyên
       {
         name: "1. Documents",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Documents.jpg",
@@ -529,51 +530,78 @@
         versions: [
           {
             version: "ProTube 1.0.7",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/protube.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/protube.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/ProTube.jpg"
           },
           {
             version: "VOH Radio Online 1.3.5",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/voh.radio.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/voh.radio.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/VOH.jpg"
           },
           {
             version: "VOH Radio Online 1.2.7",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/voh.radio127.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/voh.radio127.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/VOH.jpg"
           },
           {
             version: "Secure.Apps.1.0.1",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Secure.Apps.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Secure.Apps.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Secure.Apps.jpg"
           },
           {
             version: "Radio.Viet.Nam.3.0.3",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Radiovn303.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Radiovn303.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/RadioVietNamOnline.jpg"
           },
           {
             version: "Delta.1.5.1",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Delta.151.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Delta.151.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Delta.jpg"
           },
           {
             version: "Delta.1.7.3",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Delta.173.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Delta.173.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Delta.jpg"
           },
           {
             version: "GPS.Tracks.2.5.1",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/GPS.Tracks.251.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/GPS.Tracks.251.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/GPS-Tracks.jpg"
           },
           {
             version: "GPS.Tracks.3.3.1",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/GPS.Tracks.3.3.1.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/GPS.Tracks.3.3.1.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/GPS-Tracks.jpg"
           },
           {
             version: "cloudflare(1.1.1.1)6.21",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/cloudflare.1.1.1.1.6.21.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/cloudflare.1.1.1.1.6.21.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/1.1.1.1.jpg"
           },
           {
             version: "Muvi.1.6.4",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Muvi.164.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Muvi.164.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Muvi.jpg"
           },
           {
             version: "Sora.1.2025.291",
-            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Sora.1.2025.291.plist"
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Sora.1.2025.291.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Sora.png"
+          },
+          {
+            version: "Manic.EMU.1.0.0",
+            link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Manic.EMU.1.0.0.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Manic.EMU.jpg"
+          },
+          {
+            version: "Manic.EMU.1.7.2",
+            link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Manic.EMU.1.7.2.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Manic.EMU.jpg"
+          },
+          {
+            version: "PPSSPP.10019.3.0",
+            link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/PPSSPP.10019.3.0.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/PPSSPP.jpg"
           }
         ]
       }
@@ -586,12 +614,14 @@
       var appDiv = document.createElement("div");
       appDiv.className = "app";
 
-      // Render danh sách phiên bản với icon app
+      // Render danh sách phiên bản với icon app hoặc sub-icon (cho App Tổng Hợp)
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
+        // Nếu là App Tổng Hợp và có subIcon thì dùng subIcon
+        var iconToShow = (app.name === "21. App Tổng Hợp" && v.subIcon) ? v.subIcon : app.icon;
         versionsHtml += '<div class="version">' +
-            '<div><img src="' + app.icon + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b></div>' +
+            '<div><img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b></div>' +
             '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
           '</div>';
       }

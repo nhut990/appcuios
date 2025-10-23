@@ -148,7 +148,6 @@
       letter-spacing: 0.5px;
       user-select: none;
     }
-    /* Footer giống trang 2 */
     .footer {
       text-align: center;
       margin-top: 40px;
@@ -241,7 +240,6 @@
   </div>
 
   <script>
-    // Giữ nguyên code mảng apps như yêu cầu
     var apps = [
       {
         name: "22. FLAC Player+",
@@ -288,6 +286,19 @@
           { version: "398.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.398.0.0.plist" },
           { version: "403.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.403.0.0.plist" }
         ]
+      },
+      {
+        name: "25. Edge",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Edge.jpg",
+        versions: [
+          { version: "41.14.3", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.41.14.3.plist" },
+          { version: "45.10.0", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.45.10.0.plist" },
+          { version: "93.961.57", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.93.961.57.plist" },
+          { version: "105.1343.38", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.105.1343.38.plist" },
+          { version: "117.2045.42", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.117.2045.42.plist" },
+          { version: "130.2849.46", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.130.2849.46.plist" },
+          { version: "141.3537.85", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.141.3537.85.plist" }
+        ]
       }
     ];
 
@@ -298,7 +309,6 @@
       var appDiv = document.createElement("div");
       appDiv.className = "app";
 
-      // Render danh sách phiên bản với icon app
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
@@ -308,7 +318,6 @@
           '</div>';
       }
 
-      // Hiển thị icon trong tiêu đề app
       appDiv.innerHTML =
         '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
           '<h2>' +

@@ -148,58 +148,75 @@
       letter-spacing: 0.5px;
       user-select: none;
     }
-    /* --- Footer style --- */
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      margin: 54px 0 18px 0;
-    }
-    .footer-btn {
-      background: #444a;
-      border-radius: 18px;
-      padding: 10px 38px;
-      font-size: 1.28em;
-      font-weight: bold;
+    /* Footer giống trang 2 */
+    .footer {
       text-align: center;
-      text-decoration: none;
-      transition: background 0.2s;
-      display: inline-block;
-      margin-bottom: 3px;
+      margin-top: 40px;
+      font-size: 1.16em;
+      color: #fff;
       letter-spacing: 1px;
-    }
-    .footer-btn.trang1 {
-      color: #ff5555;
-      border: none;
-      margin-bottom: 0;
-    }
-    .footer-btn.trang-chu {
-      color: #64b5f6;
-      border: none;
-    }
-    .created-by {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 1.35em;
-      letter-spacing: 1px;
+      opacity: 0.8;
       user-select: none;
     }
-    .created-by .author {
+    .blinker {
+      display: inline-block;
+      animation: blink 1.2s infinite alternate;
+      font-weight: bold;
+    }
+    .blinker2 {
+      display: inline-block;
+      animation: blink2 1.2s infinite alternate;
+      font-weight: bold;
+    }
+    @keyframes blink {
+      from { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
+      to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
+    }
+    @keyframes blink2 {
+      from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
+      to { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
+    }
+    .back-home {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 9px 16px;
+      background: #fff2;
       color: #64b5f6;
+      border-radius: 8px;
+      text-decoration: none;
       font-weight: bold;
-      font-size: 1.12em;
-      margin: 0 2px;
+      font-size: 1.04em;
+      box-shadow: 0 2px 8px #0006;
+      transition: background 0.18s, color 0.18s;
     }
-    .created-by .year {
-      color: #eee;
-      font-size: 1.1em;
-      display: block;
-      margin-top: 2px;
+    .back-home:hover {
+      background: #64b5f6;
+      color: #fff;
     }
-    .created-by .red {
+    .page2-link {
+      display: inline-block;
+      margin-bottom: 10px;
+      margin-left: 8px;
+      padding: 9px 16px;
+      background: #fff2;
       color: #ff5555;
+      border-radius: 8px;
+      text-decoration: none;
       font-weight: bold;
+      font-size: 1.04em;
+      box-shadow: 0 2px 8px #0006;
+      transition: background 0.18s, color 0.18s;
+    }
+    .page2-link:hover {
+      background: #ff5555;
+      color: #fff;
+    }
+    @media (max-width: 700px) {
+      .container { max-width: 98vw; }
+      .app { max-width: 98vw; }
+      .footer { font-size: 1em; }
+      .back-home { font-size: 0.98em; }
+      .page2-link { font-size: 0.98em; }
     }
   </style>
 </head>
@@ -213,17 +230,18 @@
     <div class="note-app-id">
       <em>Lưu ý: Các ứng dụng bên trên chỉ sử dụng được khi bạn có ID Apple của người tạo ra app</em>
     </div>
-    <!-- Footer with links and attribution -->
-    <div class="footer-links">
-      <a href="https://nhut990.github.io/appcuios/" class="footer-btn trang1">Trang 1</a>
-      <a href="https://nhut990.github.io/" class="footer-btn trang-chu">← Quay về trang chủ</a>
-      <div class="created-by">
-        Created by <span class="author">Minh <span class="red">Nhut</span></span>
-        <span class="year">&copy; 2025</span>
-      </div>
-    </div>
   </div>
+
+  <div class="footer">
+    <a class="page2-link" href="https://nhut990.github.io/appcuios/">Trang 1</a>
+    <a class="back-home" href="https://nhut990.github.io/">← Quay về trang chủ</a>
+    <br>
+    Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
+    &copy; 2025
+  </div>
+
   <script>
+    // Giữ nguyên code mảng apps như yêu cầu
     var apps = [
       {
         name: "22. FLAC Player+",
@@ -237,10 +255,7 @@
           { version: "2.7", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.2.7.plist" },
           { version: "2.9.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.2.9.3.plist" }
         ]
-      }
-    ];
-
-    var chromeApps = [
+      },
       {
         name: "23. Chrome",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Chrome.jpg",
@@ -256,10 +271,7 @@
           { version: "138.7204.119", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.138.7204.119.plist" },
           { version: "141.7390.96", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.141.7390.96.plist" }
         ]
-      }
-    ];
-
-    var instagramApps = [
+      },
       {
         name: "24. Instagram",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Instagram.jpg",
@@ -281,44 +293,37 @@
 
     var appsContainer = document.getElementById("apps");
 
-    function renderApps(appList, offset) {
-      for (var i = 0; i < appList.length; i++) {
-        var app = appList[i];
-        var appDiv = document.createElement("div");
-        appDiv.className = "app";
+    for (var i = 0; i < apps.length; i++) {
+      var app = apps[i];
+      var appDiv = document.createElement("div");
+      appDiv.className = "app";
 
-        // Render danh sách phiên bản với icon app
-        var versionsHtml = "";
-        for (var j = 0; j < app.versions.length; j++) {
-          var v = app.versions[j];
-          versionsHtml += '<div class="version">' +
-              '<div><img src="' + app.icon + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b></div>' +
-              '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
-            '</div>';
-        }
-
-        // Hiển thị icon trong tiêu đề app
-        appDiv.innerHTML =
-          '<div class="app-header" onclick="toggleVersions(' + (i + offset) + ')">' +
-            '<h2>' +
-              '<span>' + app.name.split(' ')[0] + '</span>' +
-              '<img src="' + app.icon + '" alt="icon" class="app-icon">' +
-              app.name.substring(app.name.indexOf(' ')+1) +
-            '</h2>' +
-            '<span id="arrow-' + (i + offset) + '">⬇️</span>' +
-          '</div>' +
-          '<div class="versions" id="versions-' + (i + offset) + '">' +
-            versionsHtml +
+      // Render danh sách phiên bản với icon app
+      var versionsHtml = "";
+      for (var j = 0; j < app.versions.length; j++) {
+        var v = app.versions[j];
+        versionsHtml += '<div class="version">' +
+            '<div><img src="' + app.icon + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b></div>' +
+            '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
           '</div>';
-
-        appsContainer.appendChild(appDiv);
       }
-    }
 
-    // Render các app
-    renderApps(apps, 0);
-    renderApps(chromeApps, apps.length);
-    renderApps(instagramApps, apps.length + chromeApps.length);
+      // Hiển thị icon trong tiêu đề app
+      appDiv.innerHTML =
+        '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
+          '<h2>' +
+            '<span>' + app.name.split(' ')[0] + '</span>' +
+            '<img src="' + app.icon + '" alt="icon" class="app-icon">' +
+            app.name.substring(app.name.indexOf(' ')+1) +
+          '</h2>' +
+          '<span id="arrow-' + i + '">⬇️</span>' +
+        '</div>' +
+        '<div class="versions" id="versions-' + i + '">' +
+          versionsHtml +
+        '</div>';
+
+      appsContainer.appendChild(appDiv);
+    }
 
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);

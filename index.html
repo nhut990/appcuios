@@ -269,9 +269,7 @@
   </div>
 
   <script>
-    // Danh sách app với icon tương ứng
     var apps = [
-      // Các app trước giữ nguyên
       {
         name: "1. Documents",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Documents.jpg",
@@ -381,6 +379,10 @@
         name: "9. Telegram",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Telegram.jpg",
         versions: [
+          { version: "9.2.1", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.9.2.1.plist" },
+          { version: "10.1", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.10.1.plist" },
+          { version: "10.10.1", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.10.10.1.plist" },
+          { version: "11.12.1", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.11.12.1.plist" },
           { version: "11.10", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Telegram.plist" },
           { version: "11.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Telegram.plist" },
           { version: "12.1.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Telegram.plist" }
@@ -608,24 +610,19 @@
     ];
 
     var appsContainer = document.getElementById("apps");
-
     for (var i = 0; i < apps.length; i++) {
       var app = apps[i];
       var appDiv = document.createElement("div");
       appDiv.className = "app";
-
-      // Render danh sách phiên bản với icon app hoặc sub-icon (cho App Tổng Hợp)
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
-        // Nếu là App Tổng Hợp và có subIcon thì dùng subIcon
         var iconToShow = (app.name === "21. App Tổng Hợp" && v.subIcon) ? v.subIcon : app.icon;
         versionsHtml += '<div class="version">' +
             '<div><img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b></div>' +
             '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
           '</div>';
       }
-
       var extraHtml = "";
       if (app.extra) {
         extraHtml = '<div class="extra-link">' +
@@ -636,8 +633,6 @@
           '</div>' +
         '</div>';
       }
-
-      // Hiển thị icon trong tiêu đề app
       appDiv.innerHTML =
         '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
           '<h2>' +
@@ -650,10 +645,8 @@
         '<div class="versions" id="versions-' + i + '">' +
           versionsHtml + extraHtml +
         '</div>';
-
       appsContainer.appendChild(appDiv);
     }
-
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);
       var arrow = document.getElementById("arrow-" + index);
@@ -665,7 +658,6 @@
         if(arrow) arrow.style.transform = "rotate(180deg)";
       }
     }
-
     window.install = function(link) {
       window.location.href = link;
     }

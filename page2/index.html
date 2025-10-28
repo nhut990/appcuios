@@ -43,180 +43,30 @@
       letter-spacing: 1px;
       text-shadow: 0 2px 6px #000c;
     }
-    .app-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .app {
-      background: rgba(255, 255, 255, 0.10);
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin: 0;
-      box-shadow: 0 0 8px 2px rgba(0,0,0,0.25);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 100%;
-      transition: box-shadow 0.15s;
-    }
-    .app-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-    }
-    .app-header h2 {
-      font-size: 1.15rem;
-      margin: 0;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .app-header span {
-      font-size: 1.2rem;
-      margin-left: 10px;
-      transition: transform 0.2s;
-    }
-    .app-header:hover {
-      color: #64b5f6;
-    }
-    .app-icon {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px #0005;
-      background: #fff;
-      margin-right: 2px;
-    }
-    .versions {
-      display: none;
-      margin-top: 8px;
-      animation: fadeIn 0.3s;
-    }
-    .version {
-      background: rgba(255,255,255,0.15);
-      border-radius: 7px;
-      padding: 7px 9px;
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .version .ver-icon {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-      border-radius: 6px;
-      background: #fff;
-      margin-right: 8px;
-      vertical-align: middle;
-      box-shadow: 0 2px 8px #0003;
-    }
-    .btn {
-      background: #64b5f6;
-      color: #000;
-      border: none;
-      border-radius: 7px;
-      padding: 4px 10px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 0.97em;
-      transition: background 0.15s;
-    }
-    .btn:active {
-      background: #43a047;
-      color: #fff;
-    }
-    .btn:hover {
-      background: #90caf9;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    .note-app-id {
-      text-align: center;
-      color: #bbb;
-      font-size: 1.04em;
-      margin: 24px 0 0 0;
-      font-style: italic;
-      letter-spacing: 0.5px;
-      user-select: none;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 1.16em;
-      color: #fff;
-      letter-spacing: 1px;
-      opacity: 0.8;
-      user-select: none;
-    }
-    .blinker {
-      display: inline-block;
-      animation: blink 1.2s infinite alternate;
-      font-weight: bold;
-    }
-    .blinker2 {
-      display: inline-block;
-      animation: blink2 1.2s infinite alternate;
-      font-weight: bold;
-    }
-    @keyframes blink {
-      from { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
-      to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
-    }
-    @keyframes blink2 {
-      from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
-      to { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
-    }
-    .back-home {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 9px 16px;
-      background: #fff2;
-      color: #64b5f6;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.04em;
-      box-shadow: 0 2px 8px #0006;
-      transition: background 0.18s, color 0.18s;
-    }
-    .back-home:hover {
-      background: #64b5f6;
-      color: #fff;
-    }
-    .page2-link {
-      display: inline-block;
-      margin-bottom: 10px;
-      margin-left: 8px;
-      padding: 9px 16px;
-      background: #fff2;
-      color: #ff5555;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.04em;
-      box-shadow: 0 2px 8px #0006;
-      transition: background 0.18s, color 0.18s;
-    }
-    .page2-link:hover {
-      background: #ff5555;
-      color: #fff;
-    }
-    @media (max-width: 700px) {
-      .container { max-width: 98vw; }
-      .app { max-width: 98vw; }
-      .footer { font-size: 1em; }
-      .back-home { font-size: 0.98em; }
-      .page2-link { font-size: 0.98em; }
-    }
+    .app-list { display: flex; flex-direction: column; gap: 15px; }
+    .app { background: rgba(255,255,255,0.10); border-radius: 10px; padding: 12px 14px; margin: 0; box-shadow: 0 0 8px 2px rgba(0,0,0,0.25); max-width: 600px; margin-left: auto; margin-right: auto; width: 100%; transition: box-shadow 0.15s; }
+    .app-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+    .app-header h2 { font-size: 1.15rem; margin: 0; font-weight: 600; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px; }
+    .app-header span { font-size: 1.2rem; margin-left: 10px; transition: transform 0.2s; }
+    .app-header:hover { color: #64b5f6; }
+    .app-icon { width: 32px; height: 32px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 12px #0005; background: #fff; margin-right: 2px; }
+    .versions { display: none; margin-top: 8px; animation: fadeIn 0.3s; }
+    .version { background: rgba(255,255,255,0.15); border-radius: 7px; padding: 7px 9px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
+    .version .ver-icon { width: 24px; height: 24px; object-fit: contain; border-radius: 6px; background: #fff; margin-right: 8px; vertical-align: middle; box-shadow: 0 2px 8px #0003; }
+    .btn { background: #64b5f6; color: #000; border: none; border-radius: 7px; padding: 4px 10px; cursor: pointer; font-weight: bold; font-size: 0.97em; transition: background 0.15s; }
+    .btn:active { background: #43a047; color: #fff; }
+    .btn:hover { background: #90caf9; }
+    .footer { text-align: center; margin-top: 40px; font-size: 1.16em; color: #fff; letter-spacing: 1px; opacity: 0.8; user-select: none; }
+    .blinker { display: inline-block; animation: blink 1.2s infinite alternate; font-weight: bold; }
+    .blinker2 { display: inline-block; animation: blink2 1.2s infinite alternate; font-weight: bold; }
+    @keyframes blink { from { color: #ff5555; text-shadow: 0 0 10px #ff555599; } to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } }
+    @keyframes blink2 { from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } to { color: #ff5555; text-shadow: 0 0 10px #ff555599; } }
+    .back-home { display: inline-block; margin-bottom: 10px; padding: 9px 16px; background: #fff2; color: #64b5f6; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.04em; box-shadow: 0 2px 8px #0006; transition: background 0.18s, color 0.18s; }
+    .back-home:hover { background: #64b5f6; color: #fff; }
+    .page2-link { display: inline-block; margin-bottom: 10px; margin-left: 8px; padding: 9px 16px; background: #fff2; color: #ff5555; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.04em; box-shadow: 0 2px 8px #0006; transition: background 0.18s, color 0.18s; }
+    .page2-link:hover { background: #ff5555; color: #fff; }
+    .note-app-id { text-align: center; color: #bbb; font-size: 1.04em; margin: 24px 0 0 0; font-style: italic; letter-spacing: 0.5px; user-select: none; }
+    @media (max-width: 700px) { .container { max-width: 98vw; } .app { max-width: 98vw; } .footer { font-size: 1em; } .back-home { font-size: 0.98em; } .page2-link { font-size: 0.98em; } }
   </style>
 </head>
 <body>
@@ -232,7 +82,7 @@
   </div>
 
   <div class="footer">
-    <a class="page2-link" href="https://nhut990.github.io/appcuios/">Trang trước</a>
+    <a class="page2-link" href="https://nhut990.github.io/appcuios/page2/">Trang sau</a>
     <a class="back-home" href="https://nhut990.github.io/">← Quay về trang chủ</a>
     <br>
     Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
@@ -241,6 +91,149 @@
 
   <script>
     var apps = [
+      // 16. Lịch Vạn Niên
+      {
+        name: "16. Lịch Vạn Niên",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Lichvannien.png",
+        versions: [
+          { version: "1.1.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Lichvannien.plist" },
+          { version: "1.1.27", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Lichvannien2.plist" },
+          { version: "1.4.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Lichvannien3.plist" }
+        ]
+      },
+      // 17. Máy Tính++
+      {
+        name: "17. Máy Tính++",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Maytinh.plus.jpg",
+        versions: [
+          { version: "1.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Maytinh_plus.plist" },
+          { version: "1.9", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Maytinh_plus1.plist" },
+          { version: "2.4.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Maytinh_plus2.plist" },
+          { version: "3.7", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Maytinh_plus3.plist" }
+        ]
+      },
+      // 18. Pureit
+      {
+        name: "18. Pureit",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Pureit.jpg",
+        versions: [
+          { version: "1.2.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Pureit.plist" },
+          { version: "1.2.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Pureit2.plist" }
+        ]
+      },
+      // 19. YouTube
+      {
+        name: "19. YouTube",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Youtube.jpg",
+        versions: [
+          { version: "11.03.16", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube.plist" },
+          { version: "12.25.13", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/YouTube.12.25.13.plist" },
+          { version: "13.40.7", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/YouTube.13.40.7.plist" },
+          { version: "14.33.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube1.plist" },
+          { version: "15.32.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/YouTube.15.32.3.plist" },
+          { version: "17.03.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/YouTube.17.03.3.plist" },
+          { version: "18.13.4", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube2.plist" },
+          { version: "19.49.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/YouTube.19.49.3.plist" },
+          { version: "20.10.4", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/youtube4.plist" }
+        ]
+      },
+      // 20. Zalo
+      {
+        name: "20. Zalo",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Zalo.jpg",
+        versions: [
+          { version: "3.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo.plist" },
+          { version: "5.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo1.plist" },
+          { version: "190302", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo2.plist" },
+          { version: "200701", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo3.plist" },
+          { version: "221102", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo5.plist" },
+          { version: "2240902", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo6.plist" },
+          { version: "251001", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/zalo7.plist" }
+        ]
+      },
+      // 21. App Tổng Hợp
+      {
+        name: "21. App Tổng Hợp",
+        icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/apptonghop.png",
+        versions: [
+          {
+            version: "ProTube 1.0.7",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/protube.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/ProTube.jpg"
+          },
+          {
+            version: "VOH Radio Online 1.3.5",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/voh.radio.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/VOH.jpg"
+          },
+          {
+            version: "VOH Radio Online 1.2.7",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/voh.radio127.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/VOH.jpg"
+          },
+          {
+            version: "Secure.Apps.1.0.1",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Secure.Apps.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Secure.Apps.jpg"
+          },
+          {
+            version: "Radio.Viet.Nam.3.0.3",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Radiovn303.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/RadioVietNamOnline.jpg"
+          },
+          {
+            version: "Delta.1.5.1",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Delta.151.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Delta.jpg"
+          },
+          {
+            version: "Delta.1.7.3",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Delta.173.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Delta.jpg"
+          },
+          {
+            version: "GPS.Tracks.2.5.1",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/GPS.Tracks.251.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/GPS-Tracks.jpg"
+          },
+          {
+            version: "GPS.Tracks.3.3.1",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/GPS.Tracks.3.3.1.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/GPS-Tracks.jpg"
+          },
+          {
+            version: "cloudflare(1.1.1.1)6.21",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/cloudflare.1.1.1.1.6.21.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/1.1.1.1.jpg"
+          },
+          {
+            version: "Muvi.1.6.4",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Muvi.164.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Muvi.jpg"
+          },
+          {
+            version: "Sora.1.2025.291",
+            link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Sora.1.2025.291.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Sora.png"
+          },
+          {
+            version: "Manic.EMU.1.0.0",
+            link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Manic.EMU.1.0.0.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Manic.EMU.jpg"
+          },
+          {
+            version: "Manic.EMU.1.7.2",
+            link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Manic.EMU.1.7.2.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Manic.EMU.jpg"
+          },
+          {
+            version: "PPSSPP.10019.3.0",
+            link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/PPSSPP.10019.3.0.plist",
+            subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/PPSSPP.jpg"
+          }
+        ]
+      },
+      // 22. FLAC Player+
       {
         name: "22. FLAC Player+",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/FLAC-Player.jpg",
@@ -254,6 +247,7 @@
           { version: "2.9.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.2.9.3.plist" }
         ]
       },
+      // 23. Chrome
       {
         name: "23. Chrome",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Chrome.jpg",
@@ -270,6 +264,7 @@
           { version: "141.7390.96", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.141.7390.96.plist" }
         ]
       },
+      // 24. Instagram
       {
         name: "24. Instagram",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Instagram.jpg",
@@ -287,6 +282,7 @@
           { version: "403.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.403.0.0.plist" }
         ]
       },
+      // 25. Edge
       {
         name: "25. Edge",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Edge.jpg",
@@ -300,6 +296,7 @@
           { version: "141.3537.85", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.141.3537.85.plist" }
         ]
       },
+      // 26. Google Translate
       {
         name: "26. Google Translate",
         icon: "https://github.com/Nhut11790/ipanhut117117/releases/download/v1.0_ICON/Google.Translate.jpg",
@@ -315,6 +312,7 @@
           { version: "9.15.612", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Google.Translate.9.15.612.plist" }
         ]
       },
+      // 27. GitHub
       {
         name: "27. GitHub",
         icon: "https://github.com/Nhut11790/ipanhut117117/releases/download/v1.0_ICON/GitHub.jpg",
@@ -325,7 +323,7 @@
           { version: "1.55.0", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/GitHub.1.55.0.plist" }
         ]
       },
-      // Thêm mới Lịch Việt với 12 phiên bản
+      // 28. Lịch Việt
       {
         name: "28. Lịch Việt",
         icon: "https://github.com/Nhut11790/ipanhut117117/releases/download/v1.0_ICON/LichViet.jpg",
@@ -347,21 +345,21 @@
     ];
 
     var appsContainer = document.getElementById("apps");
-
     for (var i = 0; i < apps.length; i++) {
       var app = apps[i];
       var appDiv = document.createElement("div");
       appDiv.className = "app";
-
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
+        var iconToShow = (app.name === "21. App Tổng Hợp" && v.subIcon) ? v.subIcon : app.icon;
         versionsHtml += '<div class="version">' +
-            '<div><img src="' + app.icon + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b></div>' +
+            '<div><img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b>' +
+            (v.ios ? ' <span style="color:#90caf9;font-size:0.98em; font-weight:400;">(' + v.ios + ')</span>' : '') +
+            '</div>' +
             '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
           '</div>';
       }
-
       appDiv.innerHTML =
         '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
           '<h2>' +
@@ -374,10 +372,8 @@
         '<div class="versions" id="versions-' + i + '">' +
           versionsHtml +
         '</div>';
-
       appsContainer.appendChild(appDiv);
     }
-
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);
       var arrow = document.getElementById("arrow-" + index);
@@ -389,7 +385,6 @@
         if(arrow) arrow.style.transform = "rotate(180deg)";
       }
     }
-
     window.install = function(link) {
       window.location.href = link;
     }

@@ -135,39 +135,6 @@
     .btn:hover {
       background: #90caf9;
     }
-    .extra-link {
-      background: rgba(255,255,255,0.10);
-      border-radius: 7px;
-      padding: 9px 12px;
-      margin: 10px 0 0 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      justify-content: flex-start;
-      font-size: 1rem;
-      color: #fff;
-      box-shadow: 0 0 6px 1px rgba(0,0,0,0.19);
-    }
-    .extra-link img {
-      width: 38px;
-      height: 38px;
-      border-radius: 7px;
-      object-fit: contain;
-      box-shadow: 0 2px 8px #0006;
-      background: #fff;
-      padding: 2px;
-    }
-    .extra-link a {
-      color: #64b5f6;
-      font-weight: bold;
-      text-decoration: underline;
-      margin-left: 8px;
-      font-size: 1.01em;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
     .footer {
       text-align: center;
       margin-top: 40px;
@@ -259,7 +226,6 @@
       <em>Lưu ý: Các ứng dụng bên trên chỉ sử dụng được khi bạn có ID Apple của người tạo ra app</em>
     </div>
   </div>
-
   <div class="footer">
     <a class="page2-link" href="https://nhut990.github.io/appcuios/page2/">Trang sau</a>
     <a class="back-home" href="https://nhut990.github.io/">← Quay về trang chủ</a>
@@ -267,9 +233,8 @@
     Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
     &copy; 2025
   </div>
-
   <script>
-    var apps = [
+    const apps = [
       // 1. Documents
       {
         name: "1. Documents",
@@ -330,18 +295,18 @@
         name: "5. Google Maps",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Google.Maps.jpg",
         versions: [
-          { version: "1.1.6", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.1.1.6.plist" },
-          { version: "2.2.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.2.2.0.plist" },
-          { version: "3.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/5maps.plist" },
-          { version: "4.2.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.4.2.0.plist" },
-          { version: "4.3.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/maps.plist" },
-          { version: "4.56.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.4.56.0.plist" },
-          { version: "5.55.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1maps.plist" },
-          { version: "6.1.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.6.1.0.plist" },
-          { version: "6.17.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.6.17.0.plist" },
-          { version: "6.142.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2maps.plist" },
-          { version: "6.85.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3maps.plist" },
-          { version: "24.48.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4maps.plist" }
+          { version: "1.1.6", ios: "iOS 3.2 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.1.1.6.plist" },
+          { version: "2.2.0", ios: "iOS 6.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.2.2.0.plist" },
+          { version: "3.0.0", ios: "iOS 6.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/5maps.plist" },
+          { version: "4.2.0", ios: "iOS 6.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.4.2.0.plist" },
+          { version: "4.3.0", ios: "iOS 6.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/maps.plist" },
+          { version: "4.56.0", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.4.56.0.plist" },
+          { version: "5.55.0", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1maps.plist" },
+          { version: "6.1.0", ios: "iOS 12.2 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.6.1.0.plist" },
+          { version: "6.17.0", ios: "iOS 13.4 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Google.Maps.6.17.0.plist" },
+          { version: "6.142.0", ios: "iOS 15.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2maps.plist" },
+          { version: "6.85.0", ios: "iOS 14.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3maps.plist" },
+          { version: "24.48.0", ios: "iOS 15.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4maps.plist" }
         ]
       },
       // 6. TikTok
@@ -349,11 +314,11 @@
         name: "6. TikTok",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Tiktok.jpg",
         versions: [
-          { version: "1.4.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4tiktok.plist" },
-          { version: "23.7.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/tiktok.plist" },
-          { version: "24.9.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1tiktok.plist" },
-          { version: "30.7.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2tiktok.plist" },
-          { version: "34.5.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3tiktok.plist" }
+          { version: "1.4.0", ios: "iOS 9.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4tiktok.plist" },
+          { version: "23.7.1", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/tiktok.plist" },
+          { version: "24.9.0", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1tiktok.plist" },
+          { version: "30.7.0", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2tiktok.plist" },
+          { version: "34.5.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3tiktok.plist" }
         ]
       },
       // 7. Tiktok China (抖音 Douyin)
@@ -361,16 +326,16 @@
         name: "7. Tiktok China (抖音 Douyin)",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Tiktok.jpg",
         versions: [
-          { version: "3.4.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin340.plist" },
-          { version: "8.7.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin871.plist" },
-          { version: "13.6.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin13.60.plist" },
-          { version: "21.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin21.00.plist" },
-          { version: "22.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin22.00.plist" },
-          { version: "23.8.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin23.80.plist" },
-          { version: "28.9.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin28.90.plist" },
-          { version: "29.8.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin29.80.plist" },
-          { version: "33.6.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin33.60.plist" },
-          { version: "35.4.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin35.40.plist" }
+          { version: "1.0.0", ios: "iOS 8.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin340.plist" },
+          { version: "8.7.1", ios: "iOS 8.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin871.plist" },
+          { version: "13.6.0", ios: "iOS 9.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin13.60.plist" },
+          { version: "21.0.0", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin21.00.plist" },
+          { version: "22.0.0", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin22.00.plist" },
+          { version: "23.8.0", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin23.80.plist" },
+          { version: "28.9.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin28.90.plist" },
+          { version: "29.8.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin29.80.plist" },
+          { version: "33.6.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin33.60.plist" },
+          { version: "35.4.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plis2/Douyin35.40.plist" }
         ]
       },
       // 8. BODAPLAY AI
@@ -378,9 +343,9 @@
         name: "8. BODAPLAY AI",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/BODAPLAY.AI.jpg",
         versions: [
-          { version: "1.4.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Vodaplay.plist" },
-          { version: "1.6.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Vodaplay.plist" },
-          { version: "1.6.2", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3Vodaplay.plist" }
+          { version: "1.4.1", ios: "iOS 13.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Vodaplay.plist" },
+          { version: "1.6.0", ios: "iOS 13.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Vodaplay.plist" },
+          { version: "1.6.2", ios: "iOS 13.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3Vodaplay.plist" }
         ]
       },
       // 9. Telegram
@@ -388,13 +353,13 @@
         name: "9. Telegram",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Telegram.jpg",
         versions: [
-          { version: "9.2.1", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.9.2.1.plist" },
-          { version: "10.1", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.10.1.plist" },
-          { version: "10.10.1", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.10.10.1.plist" },
-          { version: "11.12.1", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.11.12.1.plist" },
-          { version: "11.10", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Telegram.plist" },
-          { version: "11.5", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Telegram.plist" },
-          { version: "12.1.1", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Telegram.plist" }
+          { version: "9.2.1", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.9.2.1.plist" },
+          { version: "10.1", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.10.1.plist" },
+          { version: "10.10.1", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.10.10.1.plist" },
+          { version: "11.12.1", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.11.12.1.plist" },
+          { version: "11.10", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Telegram.plist" },
+          { version: "11.5", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Telegram.plist" },
+          { version: "12.1.1", ios: "iOS 13.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Telegram.plist" }
         ]
       },
       // 10. Cốc Cốc
@@ -402,56 +367,46 @@
         name: "10. Cốc Cốc",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Cococ.jpg",
         versions: [
-          { version: "60.3.73", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/cococ.plist" },
-          { version: "70.4.210", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1cococ.plist" },
-          { version: "83.0.208", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2cococ.plist" }
+          { version: "60.3.73", ios: "iOS 8.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/cococ.plist" },
+          { version: "70.4.210", ios: "iOS 9.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1cococ.plist" },
+          { version: "83.0.208", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2cococ.plist" }
         ]
       }
     ];
 
-    var appsContainer = document.getElementById("apps");
-    for (var i = 0; i < apps.length; i++) {
-      var app = apps[i];
-      var appDiv = document.createElement("div");
+    const appsContainer = document.getElementById("apps");
+    for (let i = 0; i < apps.length; i++) {
+      const app = apps[i];
+      const appDiv = document.createElement("div");
       appDiv.className = "app";
-      var versionsHtml = "";
-      for (var j = 0; j < app.versions.length; j++) {
-        var v = app.versions[j];
-        var iconToShow = v.subIcon ? v.subIcon : app.icon;
-        versionsHtml += '<div class="version">' +
-            '<div><img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b>' +
-            (v.ios ? ' <span style="color:#90caf9;font-size:0.98em; font-weight:400;">(' + v.ios + ')</span>' : '') +
-            '</div>' +
-            '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
-          '</div>';
-      }
-      var extraHtml = "";
-      if (app.extra) {
-        extraHtml = '<div class="extra-link">' +
-          '<img src="' + app.extra.img + '" alt="QR Rổ Team" />' +
-          '<div>' +
-            '<b>' + app.extra.name + '</b><br>' +
-            '<a href="' + app.extra.link + '" target="_blank" download="QR_ro_team.jpg">Tải về</a>' +
-          '</div>' +
-        '</div>';
+      let versionsHtml = "";
+      for (let j = 0; j < app.versions.length; j++) {
+        const v = app.versions[j];
+        const iconToShow = v.subIcon ? v.subIcon : app.icon;
+        versionsHtml += `<div class="version">
+            <div><img src="${iconToShow}" alt="icon" class="ver-icon"> Phiên bản <b>${v.version}</b>
+            <span style="color:#90caf9;font-size:0.98em; font-weight:400;">(${v.ios})</span>
+            </div>
+            <button class="btn" onclick="install('${v.link}')">Cài đặt</button>
+          </div>`;
       }
       appDiv.innerHTML =
-        '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
-          '<h2>' +
-            '<span>' + app.name.split(' ')[0] + '</span>' +
-            '<img src="' + app.icon + '" alt="icon" class="app-icon">' +
-            app.name.substring(app.name.indexOf(' ')+1) +
-          '</h2>' +
-          '<span id="arrow-' + i + '">⬇️</span>' +
-        '</div>' +
-        '<div class="versions" id="versions-' + i + '">' +
-          versionsHtml + extraHtml +
-        '</div>';
+        `<div class="app-header" onclick="toggleVersions(${i})">
+          <h2>
+            <span>${app.name.split(' ')[0]}</span>
+            <img src="${app.icon}" alt="icon" class="app-icon">
+            ${app.name.substring(app.name.indexOf(' ')+1)}
+          </h2>
+          <span id="arrow-${i}">⬇️</span>
+        </div>
+        <div class="versions" id="versions-${i}">
+          ${versionsHtml}
+        </div>`;
       appsContainer.appendChild(appDiv);
     }
     window.toggleVersions = function(index) {
-      var div = document.getElementById("versions-" + index);
-      var arrow = document.getElementById("arrow-" + index);
+      const div = document.getElementById("versions-" + index);
+      const arrow = document.getElementById("arrow-" + index);
       if (div.style.display === "block") {
         div.style.display = "none";
         if(arrow) arrow.style.transform = "";

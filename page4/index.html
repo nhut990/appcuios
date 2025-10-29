@@ -42,6 +42,7 @@
     text-align: left;
     position: relative;
     z-index: 2;
+    font-size: 16px;
   }
   h1 { color: #2c3e50; margin-bottom: 5px; }
   #controls {
@@ -129,19 +130,11 @@
     <button class="hd-btn" id="btnHuongDan" onclick="toggleHuongDan()">HƯỚNG DẪN</button>
   </div>
   <div id="huongDanBox">
-    <strong>Hướng Dẫn Chơi Caro Online</strong>
-    <ul>
-      <li><b>Bước 1:</b> Hai người cùng nhập <b>Tên phòng</b> giống nhau, rồi nhấn <b>Vào phòng</b>.</li>
-      <li><b>Người vào trước</b> sẽ là <span style="color:#e74c3c"><b>🔴 X (đỏ)</b></span>, người vào sau là <span style="color:#2980b9"><b>🔵 O (xanh)</b></span>.</li>
-      <li><b>Bước 2:</b> Người chơi X đi trước, xen kẽ lượt O và X.</li>
-      <li><b>Bước 3:</b> Nhấn vào ô trống để đánh quân cờ theo lượt của mình.</li>
-      <li><b>Bước 4:</b> Người thắng là người có 5 quân liên tiếp (ngang, dọc, chéo).</li>
-      <li><b>Chức năng thêm:</b><br>
-        - <b>Xóa bàn</b>: Reset ván cờ mới.<br>
-        - <b>Chat</b>: Nhập và gửi tin nhắn, popup nổi sẽ hiện 2-3 giây khi có tin nhắn mới.<br>
-        - Nếu đối thủ thoát phòng, bạn sẽ được báo popup.<br>
-      </li>
-    </ul>
+    <div>
+      Hai người cùng nhập <b>Tên phòng</b> giống nhau, rồi nhấn <b>Vào phòng</b>.<br>
+      Người vào trước sẽ là <span style="color:#e74c3c"><b>🔴 X (đỏ)</b></span>, người vào sau là <span style="color:#2980b9"><b>🔵 O (xanh)</b></span>.<br>
+      <b>Chat:</b> Nhập và gửi tin nhắn, popup nổi sẽ hiện 2-3 giây khi có tin nhắn mới và sẽ lưu lại dưới khung chat.
+    </div>
     <button class="hd-btn" onclick="toggleHuongDan()" style="background:#faad4d;color:#222;">ĐÓNG</button>
   </div>
   <h1>♟️ CARO ONLINE</h1>

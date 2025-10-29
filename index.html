@@ -13,199 +13,35 @@
       padding: 20px;
       min-height: 100vh;
     }
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
-    .title-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 25px;
-    }
-    .title-row img {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 8px #fff8);
-      background: #fff;
-      border-radius: 14px;
-      padding: 4px;
-      box-shadow: 0 2px 16px #0007;
-    }
-    h1 {
-      margin: 0;
-      color: #ff5555;
-      font-size: 2.1rem;
-      font-weight: bold;
-      text-align: center;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 6px #000c;
-    }
-    .app-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .app {
-      background: rgba(255, 255, 255, 0.10);
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin: 0;
-      box-shadow: 0 0 8px 2px rgba(0,0,0,0.25);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 100%;
-      transition: box-shadow 0.15s;
-    }
-    .app-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-    }
-    .app-header h2 {
-      font-size: 1.15rem;
-      margin: 0;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .app-header span {
-      font-size: 1.2rem;
-      margin-left: 10px;
-      transition: transform 0.2s;
-    }
-    .app-header:hover {
-      color: #64b5f6;
-    }
-    .app-icon {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px #0005;
-      background: #fff;
-      margin-right: 2px;
-    }
-    .versions {
-      display: none;
-      margin-top: 8px;
-      animation: fadeIn 0.3s;
-    }
-    .version {
-      background: rgba(255,255,255,0.15);
-      border-radius: 7px;
-      padding: 7px 9px;
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .version .ver-icon {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-      border-radius: 6px;
-      background: #fff;
-      margin-right: 8px;
-      vertical-align: middle;
-      box-shadow: 0 2px 8px #0003;
-    }
-    .btn {
-      background: #64b5f6;
-      color: #000;
-      border: none;
-      border-radius: 7px;
-      padding: 4px 10px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 0.97em;
-      transition: background 0.15s;
-    }
-    .btn:active {
-      background: #43a047;
-      color: #fff;
-    }
-    .btn:hover {
-      background: #90caf9;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 1.16em;
-      color: #fff;
-      letter-spacing: 1px;
-      opacity: 0.8;
-      user-select: none;
-    }
-    .blinker {
-      display: inline-block;
-      animation: blink 1.2s infinite alternate;
-      font-weight: bold;
-    }
-    .blinker2 {
-      display: inline-block;
-      animation: blink2 1.2s infinite alternate;
-      font-weight: bold;
-    }
-    @keyframes blink {
-      from { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
-      to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
-    }
-    @keyframes blink2 {
-      from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; }
-      to { color: #ff5555; text-shadow: 0 0 10px #ff555599; }
-    }
-    .back-home {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 9px 16px;
-      background: #fff2;
-      color: #64b5f6;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.04em;
-      box-shadow: 0 2px 8px #0006;
-      transition: background 0.18s, color 0.18s;
-    }
-    .back-home:hover {
-      background: #64b5f6;
-      color: #fff;
-    }
-    .page2-link {
-      display: inline-block;
-      margin-bottom: 10px;
-      margin-left: 8px;
-      padding: 9px 16px;
-      background: #fff2;
-      color: #ff5555;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.04em;
-      box-shadow: 0 2px 8px #0006;
-      transition: background 0.18s, color 0.18s;
-    }
-    .page2-link:hover {
-      background: #ff5555;
-      color: #fff;
-    }
-    .note-app-id {
-      text-align: center;
-      color: #bbb;
-      font-size: 1.04em;
-      margin: 24px 0 0 0;
-      font-style: italic;
-      letter-spacing: 0.5px;
-      user-select: none;
-    }
+    .container { max-width: 600px; margin: auto; }
+    .title-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 25px;}
+    .title-row img { width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 2px 8px #fff8); background: #fff; border-radius: 14px; padding: 4px; box-shadow: 0 2px 16px #0007;}
+    h1 { margin: 0; color: #ff5555; font-size: 2.1rem; font-weight: bold; text-align: center; letter-spacing: 1px; text-shadow: 0 2px 6px #000c;}
+    .app-list { display: flex; flex-direction: column; gap: 15px;}
+    .app { background: rgba(255, 255, 255, 0.10); border-radius: 10px; padding: 12px 14px; margin: 0; box-shadow: 0 0 8px 2px rgba(0,0,0,0.25); max-width: 600px; margin-left: auto; margin-right: auto; width: 100%; transition: box-shadow 0.15s;}
+    .app-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none;}
+    .app-header h2 { font-size: 1.15rem; margin: 0; font-weight: 600; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px;}
+    .app-header span { font-size: 1.2rem; margin-left: 10px; transition: transform 0.2s;}
+    .app-header:hover { color: #64b5f6;}
+    .app-icon { width: 32px; height: 32px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 12px #0005; background: #fff; margin-right: 2px;}
+    .versions { display: none; margin-top: 8px; animation: fadeIn 0.3s;}
+    .version { background: rgba(255,255,255,0.15); border-radius: 7px; padding: 7px 9px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;}
+    .version-info { display: flex; flex-direction: column; }
+    .version .ver-icon { width: 24px; height: 24px; object-fit: contain; border-radius: 6px; background: #fff; margin-right: 8px; vertical-align: middle; box-shadow: 0 2px 8px #0003;}
+    .ios-support { color: #90caf9; font-size: 0.98em; font-weight: 400; margin-top: 2px; }
+    .btn { background: #64b5f6; color: #000; border: none; border-radius: 7px; padding: 4px 10px; cursor: pointer; font-weight: bold; font-size: 0.97em; transition: background 0.15s;}
+    .btn:active { background: #43a047; color: #fff;}
+    .btn:hover { background: #90caf9;}
+    .footer { text-align: center; margin-top: 40px; font-size: 1.16em; color: #fff; letter-spacing: 1px; opacity: 0.8; user-select: none;}
+    .blinker { display: inline-block; animation: blink 1.2s infinite alternate; font-weight: bold;}
+    .blinker2 { display: inline-block; animation: blink2 1.2s infinite alternate; font-weight: bold;}
+    @keyframes blink { from { color: #ff5555; text-shadow: 0 0 10px #ff555599; } to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } }
+    @keyframes blink2 { from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } to { color: #ff5555; text-shadow: 0 0 10px #ff555599; } }
+    .back-home { display: inline-block; margin-bottom: 10px; padding: 9px 16px; background: #fff2; color: #64b5f6; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.04em; box-shadow: 0 2px 8px #0006; transition: background 0.18s, color 0.18s;}
+    .back-home:hover { background: #64b5f6; color: #fff;}
+    .page2-link { display: inline-block; margin-bottom: 10px; margin-left: 8px; padding: 9px 16px; background: #fff2; color: #ff5555; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.04em; box-shadow: 0 2px 8px #0006; transition: background 0.18s, color 0.18s;}
+    .page2-link:hover { background: #ff5555; color: #fff;}
+    .note-app-id { text-align: center; color: #bbb; font-size: 1.04em; margin: 24px 0 0 0; font-style: italic; letter-spacing: 0.5px; user-select: none;}
     @media (max-width: 700px) {
       .container { max-width: 98vw; }
       .app { max-width: 98vw; }
@@ -384,11 +220,14 @@
         const v = app.versions[j];
         const iconToShow = v.subIcon ? v.subIcon : app.icon;
         versionsHtml += `<div class="version">
-            <div><img src="${iconToShow}" alt="icon" class="ver-icon"> Phiên bản <b>${v.version}</b>
-            <span style="color:#90caf9;font-size:0.98em; font-weight:400;">(${v.ios})</span>
-            </div>
-            <button class="btn" onclick="install('${v.link}')">Cài đặt</button>
-          </div>`;
+          <div class="version-info">
+            <span>
+              <img src="${iconToShow}" alt="icon" class="ver-icon"> Phiên bản <b>${v.version}</b>
+            </span>
+            <span class="ios-support">(${v.ios})</span>
+          </div>
+          <button class="btn" onclick="install('${v.link}')">Cài đặt</button>
+        </div>`;
       }
       appDiv.innerHTML =
         `<div class="app-header" onclick="toggleVersions(${i})">

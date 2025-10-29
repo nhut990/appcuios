@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Caro Online Nâng Cấp</title>
 <style>
   body {
@@ -11,6 +11,37 @@
     background: #fafafa;
     margin: 0;
     padding: 20px;
+  }
+  .hd-toggle {
+    margin-bottom: 6px;
+    display: inline-block;
+  }
+  .hd-btn {
+    background: #2980b9;
+    color: #fff;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  .hd-btn:hover { background: #1c5a87; }
+  #huongDanBox {
+    display: none;
+    background: #fffbe6;
+    border: 1px solid #faad4d;
+    color: #2c3e50;
+    padding: 18px;
+    margin: 0 auto 12px auto;
+    max-width: 410px;
+    box-shadow: 0 2px 12px #0001;
+    border-radius: 10px;
+    transition: all 0.3s;
+    text-align: left;
+    position: relative;
+    z-index: 2;
   }
   h1 { color: #2c3e50; margin-bottom: 5px; }
   #controls {
@@ -62,6 +93,7 @@
     height: 180px;
     overflow-y: auto;
     text-align: left;
+    position: relative;
   }
   #chatInput {
     width: 240px;
@@ -69,9 +101,50 @@
   .x-cell { color: #e74c3c; }
   .o-cell { color: #2980b9; }
   .win-cell { background: #ffe066 !important; }
+  #popupMsg {
+    position: fixed;
+    left: 50%;
+    top: 70px;
+    transform: translateX(-50%);
+    background: #fffbe6;
+    color: #333;
+    border: 1px solid #d35400;
+    box-shadow: 0 2px 8px #9994;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 18px;
+    z-index: 99;
+    display: none;
+    pointer-events: none;
+    animation: fadeIn 0.3s;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1;}
+  }
 </style>
 </head>
 <body>
+  <div class="hd-toggle">
+    <button class="hd-btn" id="btnHuongDan" onclick="toggleHuongDan()">HƯỚNG DẪN</button>
+  </div>
+  <div id="huongDanBox">
+    <strong>Hướng Dẫn Chơi Caro Online</strong>
+    <ul>
+      <li><b>Bước 1:</b> Hai người cùng nhập <b>Tên phòng</b> giống nhau, rồi nhấn <b>Vào phòng</b>.</li>
+      <li><b>Người vào trước</b> sẽ là <span style="color:#e74c3c"><b>🔴 X (đỏ)</b></span>, người vào sau là <span style="color:#2980b9"><b>🔵 O (xanh)</b></span>.</li>
+      <li><b>Bước 2:</b> Người chơi X đi trước, xen kẽ lượt O và X.</li>
+      <li><b>Bước 3:</b> Nhấn vào ô trống để đánh quân cờ theo lượt của mình.</li>
+      <li><b>Bước 4:</b> Người thắng là người có 5 quân liên tiếp (ngang, dọc, chéo).</li>
+      <li><b>Chức năng thêm:</b><br>
+        - <b>Xóa bàn</b>: Reset ván cờ mới.<br>
+        - <b>Chat</b>: Nhập và gửi tin nhắn, popup nổi sẽ hiện 2-3 giây khi có tin nhắn mới.<br>
+        - Nếu đối thủ thoát phòng, bạn sẽ được báo popup.<br>
+        - Không thể thu phóng màn hình bằng chuột, phím hay thao tác chạm.
+      </li>
+    </ul>
+    <button class="hd-btn" onclick="toggleHuongDan()" style="background:#faad4d;color:#222;">ĐÓNG</button>
+  </div>
   <h1>♟️ CARO ONLINE</h1>
   <div id="controls">
     <input id="roomInput" placeholder="Tên phòng...">
@@ -87,15 +160,15 @@
   <input id="chatInput" placeholder="Nhập tin nhắn...">
   <button onclick="guiTinNhan()">Gửi</button>
 
+  <div id="popupMsg"></div>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
     import { getDatabase, ref, set, onValue, get, remove, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
-
-    // Firebase config: Bạn có thể thêm apiKey, authDomain nếu cần, hiện chỉ có databaseURL là đủ cho demo
+    // Firebase config
     const firebaseConfig = {
       databaseURL: "https://caro-f92be-default-rtdb.firebaseio.com/"
     };
-
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
@@ -103,11 +176,19 @@
     const board = document.getElementById("board");
     const chatBox = document.getElementById("chatBox");
     const winnerBox = document.getElementById("winner");
+    const popupMsg = document.getElementById("popupMsg");
     let room = "";
     let myMark = "";
     let currentTurn = "X";
     let isGameOver = false;
     let winCells = [];
+    let lastChatMsgId = null;
+
+    // Hướng dẫn
+    window.toggleHuongDan = function() {
+      const box = document.getElementById("huongDanBox");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    };
 
     // Tạo bàn cờ
     function taoBan() {
@@ -126,7 +207,6 @@
       winnerBox.textContent = "";
       isGameOver = false;
     }
-
     taoBan();
 
     // Vào phòng
@@ -139,7 +219,6 @@
       const snapshot = await get(playerRef);
       const players = snapshot.val() || {};
 
-      // Xác định mark và ghi vào players
       if (!players.X) {
         myMark = "X";
         set(ref(db, `caro/${room}/players/X`), true);
@@ -151,10 +230,9 @@
         return;
       }
 
-      document.getElementById("info").textContent = 
+      document.getElementById("info").textContent =
         `Bạn đang ở phòng: ${room} | Bạn là ${myMark === "X" ? "🔴 X (đỏ)" : "🔵 O (xanh)"}`;
 
-      // Nếu phòng mới, thiết lập lượt đầu là X
       const turnRef = ref(db, `caro/${room}/turn`);
       const turnSnap = await get(turnRef);
       if (!turnSnap.exists()) {
@@ -163,8 +241,8 @@
 
       langNghe();
       langNgheChat();
+      langNghePlayer();
 
-      // Khi reload/thoát thì xóa player khỏi phòng
       window.onbeforeunload = () => {
         if (room && myMark) {
           remove(ref(db, `caro/${room}/players/${myMark}`));
@@ -177,23 +255,19 @@
       if (!room) return alert("Chưa vào phòng!");
       if (isGameOver) return;
       if (myMark !== currentTurn) {
-        // Chỉ hiện alert nếu thực sự không phải lượt của mình (X hoặc O)
         return alert("Chưa đến lượt bạn!");
       }
       const o = document.getElementById(`o_${x}_${y}`);
       if (o.textContent) return;
       set(ref(db, `caro/${room}/board/${x}_${y}`), myMark);
 
-      // Sau khi đánh, kiểm tra thắng/thua
       setTimeout(() => {
         kiemTraThang(x, y, myMark);
       }, 150);
 
-      // Đổi lượt
       set(ref(db, `caro/${room}/turn`), myMark === "X" ? "O" : "X");
     }
 
-    // Lắng nghe cờ
     function langNghe() {
       onValue(ref(db, `caro/${room}/board`), (snap) => {
         const data = snap.val();
@@ -211,7 +285,6 @@
             }
           }
         }
-        // Tô màu các ô thắng nếu có
         if (winCells.length > 0) {
           winCells.forEach(([i, j]) => {
             const o = document.getElementById(`o_${i}_${j}`);
@@ -223,12 +296,8 @@
         currentTurn = snap.val() || "X";
         let msg = "";
         if (myMark) {
-          if (isGameOver) {
-            msg = "Kết thúc ván!";
-          } else {
-            msg = currentTurn === myMark ? "Đến lượt bạn" : "Đến lượt đối thủ";
-          }
-          document.getElementById("info").textContent = 
+          msg = isGameOver ? "Kết thúc ván!" : (currentTurn === myMark ? "Đến lượt bạn" : "Đến lượt đối thủ");
+          document.getElementById("info").textContent =
             `Bạn đang ở phòng: ${room} | Bạn là ${myMark === "X" ? "🔴 X" : "🔵 O"} - ${msg}`;
         }
       });
@@ -245,7 +314,6 @@
       });
     }
 
-    // Kiểm tra thắng/thua
     function kiemTraThang(x, y, mark) {
       const getCell = (i, j) => {
         const o = document.getElementById(`o_${i}_${j}`);
@@ -277,7 +345,6 @@
           return;
         }
       }
-      // Kiểm tra hòa
       let isFull = true;
       for (let i = 0; i < SIZE; i++) {
         for (let j = 0; j < SIZE; j++) {
@@ -294,7 +361,6 @@
       }
     }
 
-    // Xóa bàn
     window.xoaBan = function() {
       if (!room) return alert("Chưa vào phòng!");
       remove(ref(db, `caro/${room}/board`));
@@ -303,11 +369,9 @@
       winnerBox.textContent = "";
       isGameOver = false;
       winCells = [];
-      // Xóa chat luôn cho dễ test
       remove(ref(db, `caro/${room}/chat`));
     };
 
-    // Chat realtime
     window.guiTinNhan = function() {
       if (!room || !myMark) return alert("Chưa vào phòng!");
       const msg = document.getElementById("chatInput").value.trim();
@@ -317,20 +381,84 @@
       document.getElementById("chatInput").value = "";
     };
 
+    function showPopup(text, color = "#333") {
+      popupMsg.textContent = text;
+      popupMsg.style.display = "block";
+      popupMsg.style.color = color;
+      clearTimeout(popupMsg._timeout);
+      popupMsg._timeout = setTimeout(() => {
+        popupMsg.style.display = "none";
+      }, 2300);
+    }
+
     function langNgheChat() {
       onValue(ref(db, `caro/${room}/chat`), (snap) => {
         const data = snap.val();
+        let lastMsg = null;
         chatBox.innerHTML = `<b>[Phòng: ${room || "?"}]</b><br>`;
         if (data) {
-          Object.values(data).forEach(m => {
+          const allMsgs = Object.values(data);
+          allMsgs.forEach(m => {
             const div = document.createElement("div");
             div.innerHTML = `<b style="color:${m.mark==='X'?'#e74c3c':'#2980b9'}">${m.mark}</b>: ${m.text}`;
             chatBox.appendChild(div);
           });
+          lastMsg = allMsgs[allMsgs.length - 1];
+          if (lastMsg && lastMsg._id !== lastChatMsgId) {
+            showPopup(`${lastMsg.mark}: ${lastMsg.text}`, lastMsg.mark === "X" ? "#e74c3c" : "#2980b9");
+            lastChatMsgId = lastMsg._id;
+          }
           chatBox.scrollTop = chatBox.scrollHeight;
         }
       });
     }
+
+    function langNghePlayer() {
+      onValue(ref(db, `caro/${room}/players`), (snap) => {
+        const data = snap.val() || {};
+        if (myMark === "X" && !data.O) {
+          if (Object.keys(data).length === 1) showPopup("Đối thủ đã thoát phòng!", "#d35400");
+        }
+        if (myMark === "O" && !data.X) {
+          if (Object.keys(data).length === 1) showPopup("Đối thủ đã thoát phòng!", "#d35400");
+        }
+      });
+    }
+
+    // Ngăn double-tap zoom & pinch zoom (mobile)
+    let lastTouchEnd = 0;
+    document.addEventListener("touchend", function(e){
+      const now = Date.now();
+      if(now - lastTouchEnd <= 300){
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+
+    document.addEventListener("gesturestart", function(e){
+      e.preventDefault();
+    });
+    document.addEventListener("gesturechange", function(e){
+      e.preventDefault();
+    });
+    document.addEventListener("gestureend", function(e){
+      e.preventDefault();
+    });
+
+    document.addEventListener("keydown", function(e){
+      if((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=')){
+        e.preventDefault();
+      }
+    });
+    document.addEventListener("wheel", function(e){
+      if(e.ctrlKey){
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    document.addEventListener("dblclick", function(e){
+      e.preventDefault();
+    }, false);
   </script>
 </body>
 </html>

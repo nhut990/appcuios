@@ -26,6 +26,12 @@
     font-weight: bold;
     color: #333;
   }
+  #winner {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #d35400;
+  }
   #board {
     display: grid;
     justify-content: center;
@@ -44,6 +50,7 @@
     justify-content: center;
     background: white;
     cursor: pointer;
+    transition: background 0.2s;
   }
   .cell:hover { background: #f0f0f0; }
   #chatBox {
@@ -59,6 +66,9 @@
   #chatInput {
     width: 240px;
   }
+  .x-cell { color: #e74c3c; }
+  .o-cell { color: #2980b9; }
+  .win-cell { background: #ffe066 !important; }
 </style>
 </head>
 <body>
@@ -70,7 +80,7 @@
   </div>
 
   <div id="info">Chưa vào phòng</div>
-
+  <div id="winner"></div>
   <div id="board"></div>
 
   <div id="chatBox"></div>
@@ -81,6 +91,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
     import { getDatabase, ref, set, onValue, get, remove, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
+    // Firebase config: Bạn có thể thêm apiKey, authDomain nếu cần, hiện chỉ có databaseURL là đủ cho demo
     const firebaseConfig = {
       databaseURL: "https://caro-f92be-default-rtdb.firebaseio.com/"
     };
@@ -91,13 +102,17 @@
     const SIZE = 15;
     const board = document.getElementById("board");
     const chatBox = document.getElementById("chatBox");
+    const winnerBox = document.getElementById("winner");
     let room = "";
     let myMark = "";
     let currentTurn = "X";
+    let isGameOver = false;
+    let winCells = [];
 
     // Tạo bàn cờ
     function taoBan() {
       board.innerHTML = "";
+      winCells = [];
       board.style.gridTemplateColumns = `repeat(${SIZE}, 32px)`;
       for (let i = 0; i < SIZE; i++) {
         for (let j = 0; j < SIZE; j++) {
@@ -108,6 +123,8 @@
           board.appendChild(o);
         }
       }
+      winnerBox.textContent = "";
+      isGameOver = false;
     }
 
     taoBan();
@@ -117,10 +134,12 @@
       room = document.getElementById("roomInput").value.trim();
       if (!room) return alert("Nhập tên phòng!");
       document.getElementById("info").textContent = "Đang vào phòng...";
+
       const playerRef = ref(db, `caro/${room}/players`);
       const snapshot = await get(playerRef);
       const players = snapshot.val() || {};
 
+      // Xác định mark và ghi vào players
       if (!players.X) {
         myMark = "X";
         set(ref(db, `caro/${room}/players/X`), true);
@@ -133,22 +152,44 @@
       }
 
       document.getElementById("info").textContent = 
-        `Bạn là ${myMark === "X" ? "🔴 X (đỏ)" : "🔵 O (xanh)"}`;
+        `Bạn đang ở phòng: ${room} | Bạn là ${myMark === "X" ? "🔴 X (đỏ)" : "🔵 O (xanh)"}`;
+
+      // Nếu phòng mới, thiết lập lượt đầu là X
+      const turnRef = ref(db, `caro/${room}/turn`);
+      const turnSnap = await get(turnRef);
+      if (!turnSnap.exists()) {
+        set(turnRef, "X");
+      }
 
       langNghe();
       langNgheChat();
+
+      // Khi reload/thoát thì xóa player khỏi phòng
+      window.onbeforeunload = () => {
+        if (room && myMark) {
+          remove(ref(db, `caro/${room}/players/${myMark}`));
+        }
+      };
     };
 
     // Đánh cờ
     function danhCo(x, y) {
       if (!room) return alert("Chưa vào phòng!");
+      if (isGameOver) return;
       if (myMark !== currentTurn) {
-        alert("Chưa đến lượt bạn!");
-        return;
+        // Chỉ hiện alert nếu thực sự không phải lượt của mình (X hoặc O)
+        return alert("Chưa đến lượt bạn!");
       }
       const o = document.getElementById(`o_${x}_${y}`);
       if (o.textContent) return;
       set(ref(db, `caro/${room}/board/${x}_${y}`), myMark);
+
+      // Sau khi đánh, kiểm tra thắng/thua
+      setTimeout(() => {
+        kiemTraThang(x, y, myMark);
+      }, 150);
+
+      // Đổi lượt
       set(ref(db, `caro/${room}/turn`), myMark === "X" ? "O" : "X");
     }
 
@@ -156,26 +197,101 @@
     function langNghe() {
       onValue(ref(db, `caro/${room}/board`), (snap) => {
         const data = snap.val();
-        document.querySelectorAll(".cell").forEach(c => c.textContent = "");
+        document.querySelectorAll(".cell").forEach(c => {
+          c.textContent = "";
+          c.classList.remove("x-cell", "o-cell", "win-cell");
+        });
         if (data) {
           for (const k in data) {
             const [x, y] = k.split("_");
             const o = document.getElementById(`o_${x}_${y}`);
             if (o) {
               o.textContent = data[k];
-              o.style.color = data[k] === "X" ? "#e74c3c" : "#2980b9";
+              o.classList.add(data[k] === "X" ? "x-cell" : "o-cell");
             }
           }
+        }
+        // Tô màu các ô thắng nếu có
+        if (winCells.length > 0) {
+          winCells.forEach(([i, j]) => {
+            const o = document.getElementById(`o_${i}_${j}`);
+            if (o) o.classList.add("win-cell");
+          });
         }
       });
       onValue(ref(db, `caro/${room}/turn`), (snap) => {
         currentTurn = snap.val() || "X";
+        let msg = "";
         if (myMark) {
-          const msg = currentTurn === myMark ? "Đến lượt bạn" : "Đến lượt đối thủ";
+          if (isGameOver) {
+            msg = "Kết thúc ván!";
+          } else {
+            msg = currentTurn === myMark ? "Đến lượt bạn" : "Đến lượt đối thủ";
+          }
           document.getElementById("info").textContent = 
-            `Bạn là ${myMark === "X" ? "🔴 X" : "🔵 O"} - ${msg}`;
+            `Bạn đang ở phòng: ${room} | Bạn là ${myMark === "X" ? "🔴 X" : "🔵 O"} - ${msg}`;
         }
       });
+      onValue(ref(db, `caro/${room}/winner`), (snap) => {
+        const winner = snap.val();
+        if (winner) {
+          isGameOver = true;
+          winnerBox.textContent = winner === "draw"
+            ? "Hòa! Không còn ô trống."
+            : `🎉 Người thắng: ${winner === "X" ? "🔴 X (đỏ)" : "🔵 O (xanh)"}`;
+        } else {
+          winnerBox.textContent = "";
+        }
+      });
+    }
+
+    // Kiểm tra thắng/thua
+    function kiemTraThang(x, y, mark) {
+      const getCell = (i, j) => {
+        const o = document.getElementById(`o_${i}_${j}`);
+        return o && o.textContent;
+      };
+      const dirs = [
+        [0, 1], [1, 0], [1, 1], [1, -1]
+      ];
+      for (let d = 0; d < dirs.length; d++) {
+        let count = 1, cells = [[x, y]];
+        for (let step = 1; step < 5; step++) {
+          const nx = x + dirs[d][0] * step;
+          const ny = y + dirs[d][1] * step;
+          if (getCell(nx, ny) === mark) {
+            count++; cells.push([nx, ny]);
+          } else break;
+        }
+        for (let step = 1; step < 5; step++) {
+          const nx = x - dirs[d][0] * step;
+          const ny = y - dirs[d][1] * step;
+          if (getCell(nx, ny) === mark) {
+            count++; cells.push([nx, ny]);
+          } else break;
+        }
+        if (count >= 5) {
+          isGameOver = true;
+          winCells = cells;
+          set(ref(db, `caro/${room}/winner`), mark);
+          return;
+        }
+      }
+      // Kiểm tra hòa
+      let isFull = true;
+      for (let i = 0; i < SIZE; i++) {
+        for (let j = 0; j < SIZE; j++) {
+          if (!getCell(i, j)) {
+            isFull = false;
+            break;
+          }
+        }
+        if (!isFull) break;
+      }
+      if (isFull) {
+        set(ref(db, `caro/${room}/winner`), "draw");
+        isGameOver = true;
+      }
     }
 
     // Xóa bàn
@@ -183,6 +299,12 @@
       if (!room) return alert("Chưa vào phòng!");
       remove(ref(db, `caro/${room}/board`));
       set(ref(db, `caro/${room}/turn`), "X");
+      remove(ref(db, `caro/${room}/winner`));
+      winnerBox.textContent = "";
+      isGameOver = false;
+      winCells = [];
+      // Xóa chat luôn cho dễ test
+      remove(ref(db, `caro/${room}/chat`));
     };
 
     // Chat realtime
@@ -198,7 +320,7 @@
     function langNgheChat() {
       onValue(ref(db, `caro/${room}/chat`), (snap) => {
         const data = snap.val();
-        chatBox.innerHTML = "";
+        chatBox.innerHTML = `<b>[Phòng: ${room || "?"}]</b><br>`;
         if (data) {
           Object.values(data).forEach(m => {
             const div = document.createElement("div");

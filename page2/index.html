@@ -50,7 +50,7 @@
     .app-header span { font-size: 1.2rem; margin-left: 10px; transition: transform 0.2s; }
     .app-header:hover { color: #64b5f6; }
     .app-icon { width: 32px; height: 32px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 12px #0005; background: #fff; margin-right: 2px; }
-    .versions { display: none; margin-top: 8px; animation: fadeIn 0.3s; }
+    .versions { display: none; margin-top: 8px; }
     .version { background: rgba(255,255,255,0.15); border-radius: 7px; padding: 7px 9px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
     .version .ver-icon { width: 24px; height: 24px; object-fit: contain; border-radius: 6px; background: #fff; margin-right: 8px; vertical-align: middle; box-shadow: 0 2px 8px #0003; }
     .btn { background: #64b5f6; color: #000; border: none; border-radius: 7px; padding: 4px 10px; cursor: pointer; font-weight: bold; font-size: 0.97em; transition: background 0.15s; }
@@ -64,8 +64,6 @@
 
     .note-app-id { text-align: center; color: #bbb; font-size: 1.04em; margin: 24px 0 0 0; font-style: italic; letter-spacing: 0.5px; user-select: none; }
     @media (max-width: 700px) { .container { max-width: 98vw; } .app { max-width: 98vw; } .footer { font-size: 1em; } .back-home { font-size: 0.98em; } .page2-link { font-size: 0.98em; } }
-    
-    /* Phân trang custom */
     .paging-row {
       display: flex;
       justify-content: center;
@@ -106,6 +104,11 @@
       pointer-events: none;
       letter-spacing: 2px;
     }
+    .extra-link { margin: 8px 0 0 8px; display: flex; align-items: center; gap: 14px; }
+    .extra-link img { width: 70px; height: 70px; border-radius: 12px; border: 2px solid #fff3; background: #fff; }
+    .extra-link div { font-size: 1em; }
+    .extra-link a { color: #64b5f6; text-decoration: underline; font-weight: bold; }
+    .extra-link a:hover { color: #ff5555; }
   </style>
 </head>
 <body>
@@ -119,7 +122,6 @@
       <em>Lưu ý: Các ứng dụng bên trên chỉ sử dụng được khi bạn có ID Apple của người tạo ra app</em>
     </div>
   </div>
-
   <div class="footer">
     <div class="paging-row">
       <a class="paging-link" href="https://nhut990.github.io/appcuios/">Trước (1)</a>
@@ -130,7 +132,6 @@
     Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
     &copy; 2025
   </div>
-
   <script>
     var apps = [
       {
@@ -270,7 +271,7 @@
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
-        var iconToShow = (app.name === "21. App Tổng Hợp" && v.subIcon) ? v.subIcon : app.icon;
+        var iconToShow = app.icon;
         versionsHtml += '<div class="version">' +
             '<div><img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b>' +
             (v.ios ? '<br><span style="color:#90caf9;font-size:0.98em; font-weight:400;">' + v.ios + '</span>' : '') +
@@ -305,12 +306,13 @@
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);
       var arrow = document.getElementById("arrow-" + index);
-      if (div.style.display === "block") {
-        div.style.display = "none";
-        if(arrow) arrow.style.transform = "";
-      } else {
+      // Sửa cho iOS thấp: kiểm tra trạng thái display
+      if (div.style.display === "" || div.style.display === "none") {
         div.style.display = "block";
         if(arrow) arrow.style.transform = "rotate(180deg)";
+      } else {
+        div.style.display = "none";
+        if(arrow) arrow.style.transform = "";
       }
     }
     window.install = function(link) {

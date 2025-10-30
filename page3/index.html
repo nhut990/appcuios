@@ -50,7 +50,7 @@
     .app-header span { font-size: 1.2rem; margin-left: 10px; transition: transform 0.2s; }
     .app-header:hover { color: #64b5f6; }
     .app-icon { width: 32px; height: 32px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 12px #0005; background: #fff; margin-right: 2px; }
-    .versions { display: none; margin-top: 8px; animation: fadeIn 0.3s; }
+    .versions { display: none; margin-top: 8px; }
     .version { background: rgba(255,255,255,0.15); border-radius: 7px; padding: 7px 9px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
     .version .ver-icon { width: 24px; height: 24px; object-fit: contain; border-radius: 6px; background: #fff; margin-right: 8px; vertical-align: middle; box-shadow: 0 2px 8px #0003; }
     .btn { background: #64b5f6; color: #000; border: none; border-radius: 7px; padding: 4px 10px; cursor: pointer; font-weight: bold; font-size: 0.97em; transition: background 0.15s; }
@@ -63,7 +63,6 @@
     @keyframes blink2 { from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } to { color: #ff5555; text-shadow: 0 0 10px #ff555599; } }
     .note-app-id { text-align: center; color: #bbb; font-size: 1.04em; margin: 24px 0 0 0; font-style: italic; letter-spacing: 0.5px; user-select: none; }
     @media (max-width: 700px) { .container { max-width: 98vw; } .app { max-width: 98vw; } .footer { font-size: 1em; } .back-home { font-size: 0.98em; } .page2-link { font-size: 0.98em; } }
-    /* Phân trang custom */
     .paging-row {
       display: flex;
       justify-content: center;
@@ -117,7 +116,6 @@
       <em>Lưu ý: Các ứng dụng bên trên chỉ sử dụng được khi bạn có ID Apple của người tạo ra app</em>
     </div>
   </div>
-
   <div class="footer">
     <div class="paging-row">
       <a class="paging-link" href="https://nhut990.github.io/appcuios/page2/">Trước (2)</a>
@@ -128,10 +126,8 @@
     Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
     &copy; 2025
   </div>
-
   <script>
     var apps = [
-      // 21. App Tổng Hợp
       {
         name: "21. App Tổng Hợp",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/apptonghop.png",
@@ -153,7 +149,6 @@
           { version: "PPSSPP.10019.3.0", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/PPSSPP.10019.3.0.plist", subIcon: "https://github.com/nhut990/files/releases/download/V2.0-icon/PPSSPP.jpg" }
         ]
       },
-      // 22. FLAC Player+
       {
         name: "22. FLAC Player+",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/FLAC-Player.jpg",
@@ -167,7 +162,6 @@
           { version: "2.9.3", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/FLAC.Music.2.9.3.plist" }
         ]
       },
-      // 23. Chrome
       {
         name: "23. Chrome",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Chrome.jpg",
@@ -184,7 +178,6 @@
           { version: "141.7390.96", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Chrome.141.7390.96.plist" }
         ]
       },
-      // 24. Instagram
       {
         name: "24. Instagram",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Instagram.jpg",
@@ -202,7 +195,6 @@
           { version: "403.0.0", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Instagram.403.0.0.plist" }
         ]
       },
-      // 25. Edge
       {
         name: "25. Edge",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Edge.jpg",
@@ -216,7 +208,6 @@
           { version: "141.3537.85", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Edge.141.3537.85.plist" }
         ]
       },
-      // 26. Google Translate
       {
         name: "26. Google Translate",
         icon: "https://github.com/Nhut11790/ipanhut117117/releases/download/v1.0_ICON/Google.Translate.jpg",
@@ -232,7 +223,6 @@
           { version: "9.15.612", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Google.Translate.9.15.612.plist" }
         ]
       },
-      // 27. GitHub
       {
         name: "27. GitHub",
         icon: "https://github.com/Nhut11790/ipanhut117117/releases/download/v1.0_ICON/GitHub.jpg",
@@ -243,7 +233,6 @@
           { version: "1.55.0", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/GitHub.1.55.0.plist" }
         ]
       },
-      // 28. Lịch Việt
       {
         name: "28. Lịch Việt",
         icon: "https://github.com/Nhut11790/ipanhut117117/releases/download/v1.0_ICON/LichViet.jpg",
@@ -297,12 +286,13 @@
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);
       var arrow = document.getElementById("arrow-" + index);
-      if (div.style.display === "block") {
-        div.style.display = "none";
-        if(arrow) arrow.style.transform = "";
-      } else {
+      // Sửa cho iOS thấp: kiểm tra trạng thái display
+      if (div.style.display === "" || div.style.display === "none") {
         div.style.display = "block";
         if(arrow) arrow.style.transform = "rotate(180deg)";
+      } else {
+        div.style.display = "none";
+        if(arrow) arrow.style.transform = "";
       }
     }
     window.install = function(link) {

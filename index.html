@@ -24,7 +24,7 @@
     .app-header span { font-size: 1.2rem; margin-left: 10px; transition: transform 0.2s;}
     .app-header:hover { color: #64b5f6;}
     .app-icon { width: 32px; height: 32px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 12px #0005; background: #fff; margin-right: 2px;}
-    .versions { display: none; margin-top: 8px; animation: fadeIn 0.3s;}
+    .versions { display: none; margin-top: 8px;}
     .version { background: rgba(255,255,255,0.15); border-radius: 7px; padding: 7px 9px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;}
     .version-info { display: flex; flex-direction: column; }
     .version .ver-icon { width: 24px; height: 24px; object-fit: contain; border-radius: 6px; background: #fff; margin-right: 8px; vertical-align: middle; box-shadow: 0 2px 8px #0003;}
@@ -48,6 +48,7 @@
       .footer { font-size: 1em; }
       .back-home { font-size: 0.98em; }
       .page2-link { font-size: 0.98em; }
+      h1 { font-size: 1.35rem; }
     }
   </style>
 </head>
@@ -69,8 +70,9 @@
     Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
     &copy; 2025
   </div>
-  <script>
-    const apps = [
+  <script type="text/javascript">
+    // Dùng var, function truyền thống cho iOS thấp
+    var apps = [
       // 1. Documents
       {
         name: "1. Documents",
@@ -210,48 +212,49 @@
       }
     ];
 
-    const appsContainer = document.getElementById("apps");
-    for (let i = 0; i < apps.length; i++) {
-      const app = apps[i];
-      const appDiv = document.createElement("div");
+    var appsContainer = document.getElementById("apps");
+    for (var i = 0; i < apps.length; i++) {
+      var app = apps[i];
+      var appDiv = document.createElement("div");
       appDiv.className = "app";
-      let versionsHtml = "";
-      for (let j = 0; j < app.versions.length; j++) {
-        const v = app.versions[j];
-        const iconToShow = v.subIcon ? v.subIcon : app.icon;
-        versionsHtml += `<div class="version">
-          <div class="version-info">
-            <span>
-              <img src="${iconToShow}" alt="icon" class="ver-icon"> Phiên bản <b>${v.version}</b>
-            </span>
-            <span class="ios-support">(${v.ios})</span>
-          </div>
-          <button class="btn" onclick="install('${v.link}')">Cài đặt</button>
-        </div>`;
+      var versionsHtml = "";
+      for (var j = 0; j < app.versions.length; j++) {
+        var v = app.versions[j];
+        var iconToShow = app.icon;
+        versionsHtml += '<div class="version">' +
+          '<div class="version-info">' +
+            '<span>' +
+              '<img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b>' +
+            '</span>' +
+            '<span class="ios-support">(' + v.ios + ')</span>' +
+          '</div>' +
+          '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
+        '</div>';
       }
       appDiv.innerHTML =
-        `<div class="app-header" onclick="toggleVersions(${i})">
-          <h2>
-            <span>${app.name.split(' ')[0]}</span>
-            <img src="${app.icon}" alt="icon" class="app-icon">
-            ${app.name.substring(app.name.indexOf(' ')+1)}
-          </h2>
-          <span id="arrow-${i}">⬇️</span>
-        </div>
-        <div class="versions" id="versions-${i}">
-          ${versionsHtml}
-        </div>`;
+        '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
+          '<h2>' +
+            '<span>' + app.name.split(' ')[0] + '</span>' +
+            '<img src="' + app.icon + '" alt="icon" class="app-icon">' +
+            app.name.substring(app.name.indexOf(' ') + 1) +
+          '</h2>' +
+          '<span id="arrow-' + i + '">⬇️</span>' +
+        '</div>' +
+        '<div class="versions" id="versions-' + i + '">' +
+          versionsHtml +
+        '</div>';
       appsContainer.appendChild(appDiv);
     }
     window.toggleVersions = function(index) {
-      const div = document.getElementById("versions-" + index);
-      const arrow = document.getElementById("arrow-" + index);
-      if (div.style.display === "block") {
-        div.style.display = "none";
-        if(arrow) arrow.style.transform = "";
-      } else {
+      var div = document.getElementById("versions-" + index);
+      var arrow = document.getElementById("arrow-" + index);
+      // fix cho ios thấp: kiểm tra trạng thái display
+      if (div.style.display === "" || div.style.display === "none") {
         div.style.display = "block";
         if(arrow) arrow.style.transform = "rotate(180deg)";
+      } else {
+        div.style.display = "none";
+        if(arrow) arrow.style.transform = "";
       }
     }
     window.install = function(link) {

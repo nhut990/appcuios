@@ -124,8 +124,9 @@
         name: "4. Chợ Tốt",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Chotot.jpg",
         versions: [
+          { version: "4.9.1", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1chotot.plist" },
           { version: "4.36.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/chotot.plist" },
-          { version: "4.9.1", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1chotot.plist" }
+          { version: "4.38.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Cho-tot-4.38.0.plist" }
         ]
       },
       // 5. Google Maps
@@ -215,6 +216,22 @@
     var appsContainer = document.getElementById("apps");
     for (var i = 0; i < apps.length; i++) {
       var app = apps[i];
+      // Sắp xếp versions theo version tăng dần cho app "Chợ Tốt"
+      if(app.name === "4. Chợ Tốt") {
+        // Sử dụng sort string tự nhiên cho version
+        app.versions.sort(function(a,b){
+          // Tách các phần số theo dấu .
+          var va = a.version.split('.').map(Number);
+          var vb = b.version.split('.').map(Number);
+          for(var k=0;k<Math.max(va.length,vb.length);k++){
+            var pa = va[k] || 0;
+            var pb = vb[k] || 0;
+            if(pa < pb) return -1;
+            if(pa > pb) return 1;
+          }
+          return 0;
+        });
+      }
       var appDiv = document.createElement("div");
       appDiv.className = "app";
       var versionsHtml = "";

@@ -5,44 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cài Đặt Ứng Dụng iOS Phiên Bản Cũ - Trang 2</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: radial-gradient(ellipse at top left, #232526 0%, #434343 70%, #000 100%);
-      color: #fff;
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
-    .title-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 25px;
-    }
-    .title-row img {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 8px #fff8);
-      background: #fff;
-      border-radius: 14px;
-      padding: 4px;
-      box-shadow: 0 2px 16px #0007;
-    }
-    h1 {
-      margin: 0;
-      color: #ff5555;
-      font-size: 2.1rem;
-      font-weight: bold;
-      text-align: center;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 6px #000c;
-    }
+    body { font-family: Arial, sans-serif; background: radial-gradient(ellipse at top left, #232526 0%, #434343 70%, #000 100%); color: #fff; margin: 0; padding: 20px; min-height: 100vh; }
+    .container { max-width: 600px; margin: auto; }
+    .title-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 25px; }
+    .title-row img { width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 2px 8px #fff8); background: #fff; border-radius: 14px; padding: 4px; box-shadow: 0 2px 16px #0007; }
+    h1 { margin: 0; color: #ff5555; font-size: 2.1rem; font-weight: bold; text-align: center; letter-spacing: 1px; text-shadow: 0 2px 6px #000c; }
     .app-list { display: flex; flex-direction: column; gap: 15px; }
     .app { background: rgba(255,255,255,0.10); border-radius: 10px; padding: 12px 14px; margin: 0; box-shadow: 0 0 8px 2px rgba(0,0,0,0.25); max-width: 600px; margin-left: auto; margin-right: auto; width: 100%; transition: box-shadow 0.15s; }
     .app-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
@@ -61,49 +28,12 @@
     .blinker2 { display: inline-block; animation: blink2 1.2s infinite alternate; font-weight: bold; }
     @keyframes blink { from { color: #ff5555; text-shadow: 0 0 10px #ff555599; } to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } }
     @keyframes blink2 { from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } to { color: #ff5555; text-shadow: 0 0 10px #ff555599; } }
-
     .note-app-id { text-align: center; color: #bbb; font-size: 1.04em; margin: 24px 0 0 0; font-style: italic; letter-spacing: 0.5px; user-select: none; }
-    @media (max-width: 700px) { .container { max-width: 98vw; } .app { max-width: 98vw; } .footer { font-size: 1em; } .back-home { font-size: 0.98em; } .page2-link { font-size: 0.98em; } }
-    .paging-row {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 32px;
-      margin-bottom: 18px;
-      margin-top: 18px;
-    }
-    .paging-link {
-      padding: 8px 18px;
-      background: #fff2;
-      color: #64b5f6;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.08em;
-      box-shadow: 0 2px 8px #0006;
-      transition: background 0.18s, color 0.18s;
-      position: relative;
-      z-index: 1;
-    }
-    .paging-link:hover {
-      background: #64b5f6;
-      color: #fff;
-    }
-    .paging-current {
-      padding: 13px 22px;
-      background: #ff5555;
-      color: #fff;
-      border-radius: 18px;
-      font-size: 1.3em;
-      font-weight: bold;
-      box-shadow: 0 4px 24px #ff555599, 0 2px 8px #0009;
-      position: relative;
-      top: -14px;
-      z-index: 2;
-      user-select: none;
-      pointer-events: none;
-      letter-spacing: 2px;
-    }
+    @media (max-width: 700px) { .container { max-width: 98vw; } .app { max-width: 98vw; } .footer { font-size: 1em; } }
+    .paging-row { display: flex; justify-content: center; align-items: flex-end; gap: 32px; margin-bottom: 18px; margin-top: 18px; }
+    .paging-link { padding: 8px 18px; background: #fff2; color: #64b5f6; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.08em; box-shadow: 0 2px 8px #0006; transition: background 0.18s, color 0.18s; position: relative; z-index: 1; }
+    .paging-link:hover { background: #64b5f6; color: #fff; }
+    .paging-current { padding: 13px 22px; background: #ff5555; color: #fff; border-radius: 18px; font-size: 1.3em; font-weight: bold; box-shadow: 0 4px 24px #ff555599, 0 2px 8px #0009; position: relative; top: -14px; z-index: 2; user-select: none; pointer-events: none; letter-spacing: 2px; }
     .extra-link { margin: 8px 0 0 8px; display: flex; align-items: center; gap: 14px; }
     .extra-link img { width: 70px; height: 70px; border-radius: 12px; border: 2px solid #fff3; background: #fff; }
     .extra-link div { font-size: 1em; }
@@ -183,7 +113,8 @@
           { version: "2.0.3", ios: "iOS 8.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband2.plist" },
           { version: "2.1", ios: "iOS 9.1 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband5.plist" },
           { version: "2.3.7", ios: "iOS 12.1 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband4.plist" },
-          { version: "2.3.15", ios: "iOS 17.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband6.plist" }
+          { version: "2.3.15", ios: "iOS 17.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/garageband6.plist" },
+          { version: "2.3.18", ios: "iOS 26.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/GarageBand.2.3.18.plist" }
         ]
       },
       {
@@ -306,7 +237,6 @@
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);
       var arrow = document.getElementById("arrow-" + index);
-      // Sửa cho iOS thấp: kiểm tra trạng thái display
       if (div.style.display === "" || div.style.display === "none") {
         div.style.display = "block";
         if(arrow) arrow.style.transform = "rotate(180deg)";

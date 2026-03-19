@@ -1,146 +1,192 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Đang cập nhật</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cài Đặt Ứng Dụng iOS Phiên Bản Cũ - Trang 4</title>
   <style>
-    /* Màu nền nhẹ, chữ dịu mắt */
-    :root{
-      --bg: #f3f6f5;
-      --card: rgba(255,255,255,0.6);
-      --primary: #2f6f57; /* xanh lá dịu */
-      --muted: #55686a;
-      --shadow: 0 8px 30px rgba(47,111,87,0.08);
-      --radius: 14px;
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(ellipse at top left, #232526 0%, #434343 70%, #000 100%);
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
     }
-
-    html,body{
-      height:100%;
-      margin:0;
-      background: linear-gradient(180deg, var(--bg), #eef4f2);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      color: var(--muted);
+    .container {
+      max-width: 600px;
+      margin: auto;
     }
-
-    .wrap{
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      padding:24px;
-      box-sizing:border-box;
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 25px;
     }
-
-    .card{
-      background: var(--card);
-      padding:36px 44px;
-      border-radius: var(--radius);
-      text-align:center;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px) saturate(1.05);
-      -webkit-backdrop-filter: blur(6px) saturate(1.05);
-      max-width:920px;
-      width:100%;
+    .title-row img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px #fff8);
+      background: #fff;
+      border-radius: 14px;
+      padding: 4px;
+      box-shadow: 0 2px 16px #0007;
     }
-
-    .title{
-      font-weight:700;
-      color: var(--primary);
-      font-size: clamp(28px, 5.5vw, 56px); /* lớn, responsive */
-      line-height:1.05;
-      margin:0 0 12px 0;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
+    h1 {
+      margin: 0;
+      color: #ff5555;
+      font-size: 2.1rem;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 6px #000c;
     }
-
-    /* Dấu chấm — sẽ chớp luân phiên */
-    .dots{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      margin-left:6px;
+    .app-list { display: flex; flex-direction: column; gap: 15px; }
+    .app { background: rgba(255,255,255,0.10); border-radius: 10px; padding: 12px 14px; margin: 0; box-shadow: 0 0 8px 2px rgba(0,0,0,0.25); max-width: 600px; margin-left: auto; margin-right: auto; width: 100%; transition: box-shadow 0.15s; }
+    .app-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+    .app-header h2 { font-size: 1.15rem; margin: 0; font-weight: 600; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px; }
+    .app-header span { font-size: 1.2rem; margin-left: 10px; transition: transform 0.2s; }
+    .app-header:hover { color: #64b5f6; }
+    .app-icon { width: 32px; height: 32px; object-fit: contain; border-radius: 8px; box-shadow: 0 2px 12px #0005; background: #fff; margin-right: 2px; }
+    .versions { display: none; margin-top: 8px; }
+    .version { background: rgba(255,255,255,0.15); border-radius: 7px; padding: 7px 9px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;}
+    .version .ver-icon { width: 24px; height: 24px; object-fit: contain; border-radius: 6px; background: #fff; margin-right: 8px; vertical-align: middle; box-shadow: 0 2px 8px #0003; }
+    .version-details { display: flex; flex-direction: column; }
+    .version-ios { color: #90caf9; font-size: 0.97em; font-weight: 500; margin-top: 2px; margin-left: 32px;}
+    .btn { background: #64b5f6; color: #000; border: none; border-radius: 7px; padding: 4px 10px; cursor: pointer; font-weight: bold; font-size: 0.97em; transition: background 0.15s; }
+    .btn:active { background: #43a047; color: #fff; }
+    .btn:hover { background: #90caf9; }
+    .footer { text-align: center; margin-top: 40px; font-size: 1.16em; color: #fff; letter-spacing: 1px; opacity: 0.8; user-select: none; }
+    .blinker { display: inline-block; animation: blink 1.2s infinite alternate; font-weight: bold; }
+    .blinker2 { display: inline-block; animation: blink2 1.2s infinite alternate; font-weight: bold; }
+    @keyframes blink { from { color: #ff5555; text-shadow: 0 0 10px #ff555599; } to { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } }
+    @keyframes blink2 { from { color: #64b5f6; text-shadow: 0 0 10px #64b5f699; } to { color: #ff5555; text-shadow: 0 0 10px #ff555599; } }
+    .note-app-id { text-align: center; color: #bbb; font-size: 1.04em; margin: 24px 0 0 0; font-style: italic; letter-spacing: 0.5px; user-select: none; }
+    @media (max-width: 700px) { .container { max-width: 98vw; } .app { max-width: 98vw; } .footer { font-size: 1em; } .back-home { font-size: 0.98em; } .page2-link { font-size: 0.98em; } }
+    .paging-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 18px;
+      margin-top: 18px;
     }
-
-    .dot{
-      font-weight:900;
-      font-size: clamp(20px, 3.5vw, 36px);
-      color: var(--primary);
-      opacity: 0.25;
-      transform: translateY(0);
-      display:inline-block;
-      line-height:1;
-      animation: pulse 1.2s infinite ease-in-out;
+    .paging-link {
+      padding: 8px 18px;
+      background: #fff2;
+      color: #64b5f6;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.08em;
+      box-shadow: 0 2px 8px #0006;
+      transition: background 0.18s, color 0.18s;
+      position: relative;
+      z-index: 1;
     }
-
-    /* tạo độ trễ cho mỗi chấm để chớp tuần tự */
-    .dot:nth-child(1){ animation-delay: 0s; }
-    .dot:nth-child(2){ animation-delay: 0.15s; }
-    .dot:nth-child(3){ animation-delay: 0.30s; }
-    .dot:nth-child(4){ animation-delay: 0.45s; }
-    .dot:nth-child(5){ animation-delay: 0.60s; }
-    .dot:nth-child(6){ animation-delay: 0.75s; }
-
-    @keyframes pulse{
-      0%   { opacity: 0.18; transform: translateY(0); }
-      40%  { opacity: 1; transform: translateY(-6px) scale(1.06); }
-      80%  { opacity: 0.4; transform: translateY(-2px) scale(1.02); }
-      100% { opacity: 0.18; transform: translateY(0); }
+    .paging-link:hover {
+      background: #64b5f6;
+      color: #fff;
     }
-
-    .subtitle{
-      margin:10px 0 0 0;
-      font-size: clamp(16px, 2.5vw, 26px);
-      color: #334945;
-      opacity:0.95;
-      font-weight:600;
-    }
-
-    /* Hữu ích cho người thích động tác ít */
-    @media (prefers-reduced-motion: reduce){
-      .dot{ animation: none; opacity: 0.6; }
-    }
-
-    /* Tối ưu cho màn nhỏ */
-    @media (max-width:420px){
-      .card{ padding:28px 18px; }
+    .paging-current {
+      padding: 13px 22px;
+      background: #ff5555;
+      color: #fff;
+      border-radius: 18px;
+      font-size: 1.3em;
+      font-weight: bold;
+      box-shadow: 0 4px 24px #ff555599, 0 2px 8px #0009;
+      position: relative;
+      top: -14px;
+      z-index: 2;
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: 2px;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card" role="status" aria-live="polite">
-      <h1 class="title">
-        Đang cập nhật
-        <span class="dots" aria-hidden="true">
-          <span class="dot">.</span>
-          <span class="dot">.</span>
-          <span class="dot">.</span>
-          <span class="dot">.</span>
-          <span class="dot">.</span>
-          <span class="dot">.</span>
-        </span>
-      </h1>
-
-      <p class="subtitle">Vui lòng quay lại sau</p>
+  <div class="container">
+    <div class="title-row">
+      <img src="https://raw.githubusercontent.com/nhut990/files/refs/heads/main/hinh/Apple-Logo.png" alt="Apple Logo" />
+      <h1>Cài Đặt Ứng Dụng iOS Phiên Bản Cũ</h1>
+    </div>
+    <div id="apps" class="app-list"></div>
+    <div class="note-app-id">
+      <em>Lưu ý: Các ứng dụng bên trên chỉ sử dụng được khi bạn có ID Apple của người tạo ra app</em>
     </div>
   </div>
-
+  <div class="footer">
+    <div class="paging-row">
+      <a class="paging-link" href="https://nhut990.github.io/appcuios/page3/">Trước (3)</a>
+      <span class="paging-current">4</span>
+      <a class="paging-link" href="https://nhut990.github.io/appcuios/page5/">Sau (5)</a>
+    </div>
+    <br>
+    Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
+    &copy; 2025
+  </div>
   <script>
-    // Nếu bạn muốn thay đổi số chấm hay tốc độ bằng JavaScript:
-    // (không cần thiết nhưng để tiện chỉnh nhanh)
-    (function(){
-      // giữ aria live cập nhật theo animation cho các trình đọc màn hình
-      // (tránh spam: chỉ cập nhật khi animation bắt đầu)
-      const status = document.querySelector('.card');
-      if(status){
-        // cung cấp nội dung tĩnh ngắn để screen reader biết trạng thái
-        status.setAttribute('aria-label', 'Đang cập nhật, vui lòng quay lại sau');
+    var apps = [
+      {
+        name: "31. Shopee",
+        icon: "https://github.com/Nhut11790/ipanhut117117/releases/download/v1.0_ICON/shopee.jpg",
+        versions: [
+          { version: "3.11.9", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Shopee.3.11.9.plist" },
+          { version: "3.23.40", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Shopee.3.23.40.plist" },
+          { version: "3.38.49", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Shopee.3.38.49.plist" }
+        ]
       }
-    })();
+    ];
+
+    var appsContainer = document.getElementById("apps");
+    for (var i = 0; i < apps.length; i++) {
+      var app = apps[i];
+      var appDiv = document.createElement("div");
+      appDiv.className = "app";
+      var versionsHtml = "";
+      for (var j = 0; j < app.versions.length; j++) {
+        var v = app.versions[j];
+        var iconToShow = v.subIcon || app.icon;
+        versionsHtml += '<div class="version">' +
+            '<div class="version-details">' +
+              '<span><img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b></span>' +
+              (v.ios ? '<span class="version-ios">' + v.ios + '</span>' : '') +
+            '</div>' +
+            '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
+          '</div>';
+      }
+      appDiv.innerHTML =
+        '<div class="app-header" onclick="toggleVersions(' + i + ')">' +
+          '<h2>' +
+            '<span>' + app.name.split(' ')[0] + '</span>' +
+            '<img src="' + app.icon + '" alt="icon" class="app-icon">' +
+            app.name.substring(app.name.indexOf(' ')+1) +
+          '</h2>' +
+          '<span id="arrow-' + i + '">⬇️</span>' +
+        '</div>' +
+        '<div class="versions" id="versions-' + i + '">' +
+          versionsHtml +
+        '</div>';
+      appsContainer.appendChild(appDiv);
+    }
+    window.toggleVersions = function(index) {
+      var div = document.getElementById("versions-" + index);
+      var arrow = document.getElementById("arrow-" + index);
+      // Sửa cho iOS thấp: kiểm tra trạng thái display
+      if (div.style.display === "" || div.style.display === "none") {
+        div.style.display = "block";
+        if(arrow) arrow.style.transform = "rotate(180deg)";
+      } else {
+        div.style.display = "none";
+        if(arrow) arrow.style.transform = "";
+      }
+    }
+    window.install = function(link) {
+      window.location.href = link;
+    }
   </script>
 </body>
 </html>

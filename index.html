@@ -72,7 +72,6 @@
     &copy; 2025
   </div>
   <script type="text/javascript">
-    // Dùng var, function truyền thống cho iOS thấp
     var apps = [
       // 1. Documents
       {
@@ -162,23 +161,22 @@
           { version: "26.10.2", ios: "iOS 16.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/Google.Maps.26.10.2.plist" }
         ]
       },
-      // 6. TikTok (đã thêm 3 phiên bản mới)
+      // 6. TikTok
       {
         name: "6. TikTok",
         icon: "https://github.com/nhut990/files/releases/download/V2.0-icon/Tiktok.jpg",
         versions: [
           { version: "1.4.0", ios: "iOS 9.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/4tiktok.plist" },
+          { version: "17.6.0", ios: "iOS 9.3 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.17.6.0.plist" },
+          { version: "18.3.0", ios: "iOS 9.3 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.18.3.0.plist" },
+          { version: "22.1.0", ios: "iOS 9.3 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.22.1.0.plist" },
           { version: "23.7.1", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/tiktok.plist" },
           { version: "24.9.0", ios: "iOS 10.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1tiktok.plist" },
           { version: "30.7.0", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2tiktok.plist" },
           { version: "34.5.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/3tiktok.plist" },
           { version: "37.1.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.37.1.0.plist" },
           { version: "40.4.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.40.4.0.plist" },
-          { version: "43.9.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.43.9.0.plist" },
-          // === Các phiên bản mới thêm vào ===
-          { version: "17.6.0", ios: "iOS 9.3 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.17.6.0.plist" },
-          { version: "18.3.0", ios: "iOS 9.3 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.18.3.0.plist" },
-          { version: "22.1.0", ios: "iOS 9.3 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.22.1.0.plist" }
+          { version: "43.9.0", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_test.plist3/TikTok.43.9.0.plist" }
         ]
       },
       // 7. Tiktok China (抖音 Douyin)
@@ -216,9 +214,9 @@
           { version: "9.2.1", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.9.2.1.plist" },
           { version: "10.1", ios: "iOS 11.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.10.1.plist" },
           { version: "10.10.1", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.10.10.1.plist" },
-          { version: "11.12.1", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.11.12.1.plist" },
-          { version: "11.10", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Telegram.plist" },
           { version: "11.5", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/1Telegram.plist" },
+          { version: "11.10", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/Telegram.plist" },
+          { version: "11.12.1", ios: "iOS 12.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/Nhut11790/ipanhut117117/releases/download/V1.Test-plist/Telegram.11.12.1.plist" },
           { version: "12.1.1", ios: "iOS 13.0 or later", link: "itms-services://?action=download-manifest&url=https://github.com/nhut990/files/releases/download/v1.0_TEST.plist/2Telegram.plist" }
         ]
       },
@@ -240,35 +238,37 @@
       }
     ];
 
+    // Hàm sort version tăng dần dùng chung cho tất cả app
+    function sortVersions(versions) {
+      return versions.sort(function(a, b) {
+        var va = a.version.split('.').map(Number);
+        var vb = b.version.split('.').map(Number);
+        for (var k = 0; k < Math.max(va.length, vb.length); k++) {
+          var pa = va[k] || 0;
+          var pb = vb[k] || 0;
+          if (pa < pb) return -1;
+          if (pa > pb) return 1;
+        }
+        return 0;
+      });
+    }
+
     var appsContainer = document.getElementById("apps");
     for (var i = 0; i < apps.length; i++) {
       var app = apps[i];
-      // Sắp xếp versions theo version tăng dần cho app "Chợ Tốt", "Facebook", "Google Maps", "TikTok" và "Cốc Cốc"
-      if(app.name === "4. Chợ Tốt" || app.name === "2. Facebook" || app.name === "5. Google Maps" || app.name === "6. TikTok" || app.name === "10. Cốc Cốc") {
-        // Sử dụng sort string tự nhiên cho version
-        app.versions.sort(function(a,b){
-          // Tách các phần số theo dấu .
-          var va = a.version.split('.').map(Number);
-          var vb = b.version.split('.').map(Number);
-          for(var k=0;k<Math.max(va.length,vb.length);k++){
-            var pa = va[k] || 0;
-            var pb = vb[k] || 0;
-            if(pa < pb) return -1;
-            if(pa > pb) return 1;
-          }
-          return 0;
-        });
-      }
+
+      // Áp dụng sort tăng dần cho TẤT CẢ 10 app
+      sortVersions(app.versions);
+
       var appDiv = document.createElement("div");
       appDiv.className = "app";
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
-        var iconToShow = app.icon;
         versionsHtml += '<div class="version">' +
           '<div class="version-info">' +
             '<span>' +
-              '<img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b>' +
+              '<img src="' + app.icon + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b>' +
             '</span>' +
             '<span class="ios-support">(' + v.ios + ')</span>' +
           '</div>' +
@@ -289,18 +289,19 @@
         '</div>';
       appsContainer.appendChild(appDiv);
     }
+
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);
       var arrow = document.getElementById("arrow-" + index);
-      // fix cho ios thấp: kiểm tra trạng thái display
       if (div.style.display === "" || div.style.display === "none") {
         div.style.display = "block";
-        if(arrow) arrow.style.transform = "rotate(180deg)";
+        if (arrow) arrow.style.transform = "rotate(180deg)";
       } else {
         div.style.display = "none";
-        if(arrow) arrow.style.transform = "";
+        if (arrow) arrow.style.transform = "";
       }
     }
+
     window.install = function(link) {
       window.location.href = link;
     }

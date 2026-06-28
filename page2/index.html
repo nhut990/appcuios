@@ -62,7 +62,7 @@
     Created by <span class="blinker">Minh</span> <span class="blinker2">Nhut</span><br>
     &copy; 2025
   </div>
-  <script>
+  <script type="text/javascript">
     var apps = [
       {
         name: "11. Messenger",
@@ -194,18 +194,36 @@
       }
     ];
 
+    // Hàm sort version tăng dần dùng chung cho tất cả app
+    function sortVersions(versions) {
+      return versions.sort(function(a, b) {
+        var va = a.version.split('.').map(Number);
+        var vb = b.version.split('.').map(Number);
+        for (var k = 0; k < Math.max(va.length, vb.length); k++) {
+          var pa = va[k] || 0;
+          var pb = vb[k] || 0;
+          if (pa < pb) return -1;
+          if (pa > pb) return 1;
+        }
+        return 0;
+      });
+    }
+
     var appsContainer = document.getElementById("apps");
     for (var i = 0; i < apps.length; i++) {
       var app = apps[i];
+
+      // Áp dụng sort tăng dần cho TẤT CẢ app
+      sortVersions(app.versions);
+
       var appDiv = document.createElement("div");
       appDiv.className = "app";
       var versionsHtml = "";
       for (var j = 0; j < app.versions.length; j++) {
         var v = app.versions[j];
-        var iconToShow = app.icon;
         versionsHtml += '<div class="version">' +
-            '<div><img src="' + iconToShow + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b>' +
-            (v.ios ? '<br><span style="color:#90caf9;font-size:0.98em; font-weight:400;">' + v.ios + '</span>' : '') +
+            '<div><img src="' + app.icon + '" alt="icon" class="ver-icon"> Phiên bản <b>' + v.version + '</b>' +
+            (v.ios ? '<br><span style="color:#90caf9;font-size:0.98em;font-weight:400;">' + v.ios + '</span>' : '') +
             '</div>' +
             '<button class="btn" onclick="install(\'' + v.link + '\')">Cài đặt</button>' +
           '</div>';
@@ -225,7 +243,7 @@
           '<h2>' +
             '<span>' + app.name.split(' ')[0] + '</span>' +
             '<img src="' + app.icon + '" alt="icon" class="app-icon">' +
-            app.name.substring(app.name.indexOf(' ')+1) +
+            app.name.substring(app.name.indexOf(' ') + 1) +
           '</h2>' +
           '<span id="arrow-' + i + '">⬇️</span>' +
         '</div>' +
@@ -234,17 +252,19 @@
         '</div>';
       appsContainer.appendChild(appDiv);
     }
+
     window.toggleVersions = function(index) {
       var div = document.getElementById("versions-" + index);
       var arrow = document.getElementById("arrow-" + index);
       if (div.style.display === "" || div.style.display === "none") {
         div.style.display = "block";
-        if(arrow) arrow.style.transform = "rotate(180deg)";
+        if (arrow) arrow.style.transform = "rotate(180deg)";
       } else {
         div.style.display = "none";
-        if(arrow) arrow.style.transform = "";
+        if (arrow) arrow.style.transform = "";
       }
     }
+
     window.install = function(link) {
       window.location.href = link;
     }
